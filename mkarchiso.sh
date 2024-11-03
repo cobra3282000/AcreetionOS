@@ -1,0 +1,1 @@
+mkarchiso -L UranusOS -v -o ../ISO . -j$nproc

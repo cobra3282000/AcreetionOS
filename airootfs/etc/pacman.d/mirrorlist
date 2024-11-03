@@ -1,0 +1,99 @@
+
+
+## Canada
+Server = https://mirror.qctronics.com/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.0xem.ma/arch/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.quantum5.ca/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.quantum5.ca/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://ca.mirrors.cicku.me/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://ca.mirrors.cicku.me/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.0xem.ma/arch/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.scd31.com/arch/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.csclub.uwaterloo.ca/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.scd31.com/arch/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.xenyth.net/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.csclub.uwaterloo.ca/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.xenyth.net/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://muug.ca/mirror/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.cpsc.ucalgary.ca/mirror/archlinux.org/$repo/os/$arch
+
+
+## Canada
+Server = https://muug.ca/mirror/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror.cpsc.ucalgary.ca/mirror/archlinux.org/$repo/os/$arch
+
+
+## Canada
+Server = http://archlinux.mirror.rafal.ca/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror.its.dal.ca/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirrors.pablonara.com/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://mirrors.pablonara.com/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://mirror2.evolution-host.com/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = http://mirror2.evolution-host.com/archlinux/$repo/os/$arch
+
+
+## Canada
+Server = https://arch.mirror.winslow.cloud/$repo/os/$arch
+
+## Acreetion_OS
+Server = http://darrengames.ddns.net:1500/x86_64/

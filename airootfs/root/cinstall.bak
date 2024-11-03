@@ -1,0 +1,302 @@
+Rem $ScreenHide
+Rem $Console
+Rem _Dest _Console
+
+Cls
+
+
+Dim drv$(500), drive$(100), zone$(1000), timezone$(25), dr$(25), part$(25)
+
+
+GoTo main:
+
+display:
+Rem Print to console with color computer commands
+
+For count = 1 To Len(dd$)
+
+    loopit1:
+
+    AA$ = Mid$(dd$, count, 1)
+
+    If AA$ = "*" Then
+
+        count = count + 1
+        c$ = (Mid$(dd$, count, 1))
+        count = count + 1
+
+        If c$ = "m" Then
+            Print
+            GoTo loopit1
+        End If
+
+        c = Val(c$)
+        Color c
+        GoTo loopit1
+    End If
+
+    Print AA$;
+
+    done99:
+
+Next count
+
+Return
+
+Rem Input from keyboard!
+
+line_input:
+
+Line Input AA$
+Return
+
+lc = 0
+AA$ = ""
+
+
+
+loop2:
+
+Print Chr$(219); Chr$(29);
+
+k$ = InKey$
+If k$ = "" Then GoTo loop2
+
+cc = Asc(k$)
+
+
+
+If cc = 13 Then
+    GoTo inputend
+
+End If
+
+
+If cc = 8 And lc > 0 Then
+
+    AA$ = Mid$(AA$, 1, Len(AA$) - 1)
+    Print " "; Chr$(29); Chr$(29); Chr$(32); Chr$(29);
+    lc = lc - 1
+    GoTo loop2
+
+End If
+
+If lc < 1 And cc = 8 Then GoTo loop2
+
+
+If lc >= ll Then
+    GoTo loop2
+End If
+
+Print k$;
+lc = lc + 1
+AA$ = AA$ + k$
+
+If rt = 1 Then
+    Return
+End If
+
+GoTo loop2
+
+inputend:
+Return
+
+
+
+main:
+
+Cls
+
+dd$ = "*5Welcome *6Uranus OS*7!*m*m"
+GoSub display
+
+dd$ = "*3Installer Written by*7:*2Johnathan Spiva *7&*2 Darren Clift*m*7(*4C*7)*5 Copyright 2024*m*m"
+GoSub display
+
+dd$ = "*41*7) *6 Install UranusOS*m"
+GoSub display
+dd$ = "*42*7) *6 Exit*m*m*5Your Command*7: "
+GoSub display
+
+ll = 5
+rt = 0
+GoSub line_input
+rt = 0
+
+If AA$ = "1" Then
+    GoTo installer
+End If
+
+If AA$ = "2" Then
+    Cls
+    Print "Goodbye!"
+    Print
+    System
+End If
+
+GoTo main
+
+
+Rem  Start of main program
+
+installer:
+
+Cls
+
+dd$ = "*5Welcome to UranausOS Installer*7!*m*m*5Let us Begin with a few questions to set up*myour system*7!*m*m"
+GoSub display
+
+dd$ = "*6Your Full Name*7: "
+GoSub display
+
+ll = 50
+GoSub line_input
+
+If AA$ = "" Then
+    GoTo installer
+End If
+
+AA$ = LCase$(AA$)
+
+xx = InStr(AA$, " ")
+
+dirname$ = Mid$(AA$, 1, xx)
+
+er1:
+
+Rem gather partitios and drive info and break it up in to its variables
+
+Shell "lsblk -Sr > temp.txt"
+
+Open "i", #1, "temp.txt"
+
+Line Input #1, whatever$
+
+
+tt = 0
+
+While Not EOF(1)
+
+    tt = tt + 1
+    Line Input #1, dr$(tt)
+
+Wend
+
+Close #1
+
+Rem break up into variables
+
+For lp2 = 1 To tt
+
+    drv$(lp2) = Mid$(dr$(lp2), 1, 3)
+
+Next lp2
+
+Shell "lsblk -Nr > temp.txt"
+
+Open "i", #1, "temp.txt"
+
+Line Input #1, whatever$
+
+
+tt = 0
+
+While Not EOF(1)
+
+    tt = tt + 1
+    Line Input #1, dr$(tt)
+
+Wend
+
+Close #1
+
+lp2 = lp2 - 1
+
+
+For t = 1 To tt
+
+    drv$(t + lp2) = Left$(dr$(t), 7)
+
+Next t
+
+total = lp2 + t - 1
+
+Shell "rm temp.txt"
+
+Cls
+
+dd$ = "*2Choose Drive to install OS on*7.   *6WARNING*4 All Data On drive will be destroyed*7!  *6*mIncluding windows*7!!!!*m*m*7"
+GoSub display
+
+
+For xx = 1 To total
+
+    dd$ = "*7" + Str$(xx) + "*4- *3" + drv$(xx) + "*7*m"
+    GoSub display
+Next xx
+
+
+
+
+
+End
+
+
+Cls
+
+
+dd$ = "*m*m*3Time Zone Setting*m*m*4What Country are you in*7:"
+GoSub display
+
+ll = 35
+GoSub line_input
+
+If AA$ = "" Then
+    GoTo er1
+End If
+
+Cls
+
+country$ = UCase$(AA$ + "/")
+
+zz$ = "timedatectl list-timezones | grep -i " + country$ + " > temp.txt"
+
+Shell zz$
+
+Open "I", #1, "temp.txt"
+
+
+lp3:
+
+If EOF(1) = -1 Then GoTo eof1
+
+jj = jj + 1
+Line Input #1, timezone$(jj)
+
+GoTo lp3
+
+eof1:
+Close #1
+
+
+lp4:
+
+dd$ = "*1Choose your Location from following list*7:*m*m"
+GoSub display
+
+For x = 1 To jj
+
+    dd$ = "*7" + Str$(x) + "*4- *3" + timezone$(x) + "*7*m"
+    GoSub display
+
+Next x
+
+dd$ = "*m*m*4Your Choice*7: "
+GoSub display
+ll = 5
+GoSub line_input
+
+If AA$ = "" Then
+    GoTo lp4
+End If
+
