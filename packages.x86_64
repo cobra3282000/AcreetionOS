@@ -153,4 +153,19 @@ webapp-manager
 cups
 kpmcore
 electron31
-
+samba
+archlinux-keyring
+python-yaml
+python-jsonschema
+boost
+boost-libs
+qt5-svg
+qt5-webengine
+yaml-cpp
+networkmanager
+upower
+kcoreaddons
+kconfig
+ki18n
+# kservice 
+kwidgetsaddons
