@@ -57,6 +57,8 @@ mdadm
 mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
+mkinitcpio-busybox
+mkinitcpio-systemd-tool
 modemmanager
 mtools
 nano

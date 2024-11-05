@@ -33,7 +33,7 @@ file_permissions=(
   ["/usr/bin/fixkeys.sh"]="0:0:755"
   ["/usr/bin/dd.sh"]="0:0:755"
   ["/usr/local/bin/postinstall.sh"]="0:0:755"
-  ["/usr/bin/calamares2.sh"]="0:0:755"
+  ["/usr/bin/calamares.sh"]="0:0:755"
   ["/usr/local/bin/stormos-before"]="0:0:755"
   ["/usr/local/bin/stormos-final"]="0:0:755"
 )

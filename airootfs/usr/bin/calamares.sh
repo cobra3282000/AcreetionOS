@@ -1,5 +1,8 @@
 pacman -Sy 
-pacman -S calamaresos --noconfirm
-pacman -S calamares-config --noconfirm
+
+mkdir /usr/calamares/modules/mkinitcpio
+
+cp /mkinitcpio/* /usr/calamares/modules/mkinitcpio/
+
 calamares
 
