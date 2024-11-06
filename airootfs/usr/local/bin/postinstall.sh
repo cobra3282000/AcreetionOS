@@ -43,11 +43,23 @@ log() {
     echo "[Postinstall] $1"
 }
 
-log "Starting post-installation script..."
+log "Starting complete boot setup..."
 
 # Install necessary packages
 log "Installing required packages..."
-pacman -Sy --noconfirm grub efibootmgr linux linux-firmware mkinitcpio || log "Package installation failed"
+pacman -Sy --noconfirm \
+    grub \
+    efibootmgr \
+    linux \
+    linux-firmware \
+    mkinitcpio \
+    os-prober || log "Package installation failed"
+
+# Create necessary directories
+log "Creating boot directories..."
+mkdir -p /boot || log "Failed to create /boot"
+mkdir -p /boot/grub || log "Failed to create /boot/grub"
+mkdir -p /boot/efi || log "Failed to create /boot/efi"
 
 # Mount necessary filesystems
 log "Mounting virtual filesystems..."
@@ -56,21 +68,55 @@ mount -t sysfs sys /sys || log "Failed to mount sysfs"
 mount -t devtmpfs udev /dev || log "Failed to mount devtmpfs"
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars 2>/dev/null || log "EFI vars mount failed (might be normal for BIOS)"
 
+# Create initial mkinitcpio config
+log "Creating mkinitcpio configuration..."
+cat > /etc/mkinitcpio.conf << EOF
+MODULES=(ext4)
+BINARIES=()
+FILES=()
+HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+EOF
+
+# Create initial GRUB config
+log "Creating GRUB configuration..."
+cat > /etc/default/grub << EOF
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="AcreetionOS"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+GRUB_CMDLINE_LINUX=""
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+GRUB_DISABLE_OS_PROBER=false
+GRUB_DISABLE_SUBMENU=y
+GRUB_TERMINAL_OUTPUT="console"
+EOF
+
 # Install GRUB
 log "Installing GRUB bootloader..."
 if [ -d /sys/firmware/efi ]; then
     log "Detected UEFI system"
-    mkdir -p /boot/efi
-    grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck || log "UEFI GRUB install failed"
+    # Create EFI directory structure
+    mkdir -p /boot/efi/EFI/GRUB || log "Failed to create EFI directories"
+    
+    # Install GRUB for UEFI
+    grub-install \
+        --target=x86_64-efi \
+        --efi-directory=/boot/efi \
+        --bootloader-id=GRUB \
+        --recheck \
+        --removable || log "UEFI GRUB install failed"
+    
+    # Backup EFI files
+    cp -r /boot/efi/EFI/GRUB /boot/efi/EFI/BOOT
+    cp /boot/efi/EFI/GRUB/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 else
     log "Detected BIOS system"
-    grub-install --target=i386-pc --recheck /dev/sda || log "BIOS GRUB install failed"
+    # Install GRUB for BIOS
+    grub-install \
+        --target=i386-pc \
+        --recheck \
+        /dev/sda || log "BIOS GRUB install failed"
 fi
-
-# Configure mkinitcpio
-log "Configuring mkinitcpio..."
-sed -i 's/MODULES=()/MODULES=(btrfs)/' /etc/mkinitcpio.conf
-sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)/' /etc/mkinitcpio.conf
 
 # Generate initramfs
 log "Generating initramfs..."
@@ -80,27 +126,69 @@ mkinitcpio -P linux || log "Initramfs generation failed"
 log "Generating GRUB configuration..."
 grub-mkconfig -o /boot/grub/grub.cfg || log "GRUB config generation failed"
 
-# Verify installations
-log "Verifying installation..."
-if [ ! -f /boot/initramfs-linux.img ]; then
-    log "ERROR: Missing initramfs"
+# Verify all required files exist
+log "Verifying boot files..."
+
+CHECK_FILES=(
+    "/boot/initramfs-linux.img"
+    "/boot/vmlinuz-linux"
+    "/boot/grub/grub.cfg"
+    "/etc/default/grub"
+    "/etc/mkinitcpio.conf"
+)
+
+for file in "${CHECK_FILES[@]}"; do
+    if [ ! -f "$file" ]; then
+        log "ERROR: Missing $file"
+    else
+        log "Verified: $file exists"
+    fi
+done
+
+# Additional UEFI checks
+if [ -d /sys/firmware/efi ]; then
+    EFI_FILES=(
+        "/boot/efi/EFI/GRUB/grubx64.efi"
+        "/boot/efi/EFI/BOOT/BOOTX64.EFI"
+    )
+    
+    for file in "${EFI_FILES[@]}"; do
+        if [ ! -f "$file" ]; then
+            log "ERROR: Missing $file"
+        else
+            log "Verified: $file exists"
+        fi
+    done
+    
+    # Show EFI boot entries
+    log "EFI boot entries:"
+    efibootmgr -v
 fi
 
-if [ ! -f /boot/vmlinuz-linux ]; then
-    log "ERROR: Missing kernel"
-fi
+# Show boot directory contents
+log "Boot directory contents:"
+ls -la /boot
+log "EFI directory contents (if applicable):"
+ls -la /boot/efi/EFI 2>/dev/null
 
-if [ ! -f /boot/grub/grub.cfg ]; then
-    log "ERROR: Missing GRUB config"
-fi
+# Verify permissions
+log "Setting correct permissions..."
+chmod 700 /boot
+chmod 700 /boot/efi 2>/dev/null
+chmod 600 /boot/initramfs-linux.img
 
-# Final check
-if [ -f /boot/initramfs-linux.img ] && [ -f /boot/vmlinuz-linux ] && [ -f /boot/grub/grub.cfg ]; then
+# Final verification
+ERRORS=0
+for file in "${CHECK_FILES[@]}"; do
+    if [ ! -f "$file" ]; then
+        ERRORS=$((ERRORS+1))
+    fi
+done
+
+if [ $ERRORS -eq 0 ]; then
     log "Post-installation completed successfully"
+    exit 0
 else
-    log "Post-installation completed with errors"
+    log "Post-installation completed with $ERRORS errors"
     exit 1
 fi
-
-exit 0
-
