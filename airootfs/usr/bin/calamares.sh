@@ -1,8 +1,7 @@
 pacman -Sy 
 
-mkdir /usr/calamares/modules/mkinitcpio
-
-cp /mkinitcpio/* /usr/calamares/modules/mkinitcpio/
+sudo pacman -S calamares-config --noconfirm
+sudo pacman -S calamares-config --noconfirm
 
 calamares
 

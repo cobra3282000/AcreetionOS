@@ -69,6 +69,7 @@ nilfs-utils
 nmap
 ntfs-3g
 nvme-cli
+os-prober
 open-iscsi
 open-vm-tools
 openconnect
@@ -147,7 +148,7 @@ mate-icon-theme-faenza
 libkf6crash-devel
 glu
 calamaresos
-calamares-config
+# calamares-config
 gnome-disk-utility
 fastfetch
 cinnamon-configs
