@@ -17,7 +17,7 @@
  name=$(ls -1 /home)
  REAL_NAME=/home/$name
 
-genfstab -U / > /etc/fstab
+# genfstab -U / > /etc/fstab
 
 #cp /cinnamon-configs/cinnamon-stuff/bin/* /bin/
 #cp /cinnamon-configs/cinnamon-stuff/usr/bin/* /usr/bin/
