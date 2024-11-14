@@ -27,7 +27,7 @@ ethtool
 exfatprogs
 fatresize
 fsarchiver
-gnu-netcat
+# gnu-netcat
 gpart
 gpm
 gptfdisk
@@ -59,6 +59,7 @@ mkinitcpio-archiso
 mkinitcpio-nfs-utils
 mkinitcpio-busybox
 mkinitcpio-systemd-tool
+mkinitcpio-openswap
 modemmanager
 mtools
 nano
@@ -145,13 +146,13 @@ gedit
 gnome-system-monitor
 mate-icon-theme-faenza
 #numix-themes
-libkf6crash-devel
+# libkf6crash-devel
 glu
 calamaresos
 calamares-config
 gnome-disk-utility
 fastfetch
-cinnamon-configs
+# cinnamon-configs
 webapp-manager
 cups
 kpmcore
@@ -160,8 +161,8 @@ networkmanager
 samba
 vlc
 yay-bin
-libpamac-aur
-pamac-aur
+# libpamac-aur
+pamac-aur-git
 xarchiver
 debugedit
 fakeroot
