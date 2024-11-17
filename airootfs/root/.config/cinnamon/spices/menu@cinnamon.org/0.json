@@ -88,7 +88,7 @@
         "tooltip": "Select an icon to show in the panel.",
         "default_icon": "cinnamon-symbolic",
         "dependency": "menu-custom",
-        "value": "/home/darren/middle-finger.svg"
+        "value": "/root/middle-finger.svg"
     },
     "menu-icon-size": {
         "type": "spinbutton",
@@ -107,7 +107,7 @@
         "description": "Text",
         "tooltip": "Enter custom text to show in the panel.",
         "dependency": "menu-custom",
-        "value": "Linux Grandpa (Asshole)"
+        "value": "Acreetion OS"
     },
     "show-category-icons": {
         "type": "switch",
