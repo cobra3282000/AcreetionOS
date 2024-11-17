@@ -123,7 +123,7 @@ muffin
 nemo
 xdg-desktop-portal-xapp
 xdg-user-dirs-gtk
-gnome-terminal
+#gnome-terminal
 xorg
 lightdm
 lightdm-gtk-greeter
@@ -146,7 +146,7 @@ gedit
 gnome-system-monitor
 mate-icon-theme-faenza
 #numix-themes
-# libkf6crash-devel
+#libkf6crash-devel
 glu
 calamaresos
 calamares-config
@@ -161,10 +161,10 @@ networkmanager
 samba
 vlc
 yay-bin
-# libpamac-aur
+#libpamac-aur
 pamac-aur-git
 xarchiver
 debugedit
 fakeroot
 timeshift
-
+cosmic-terminal
