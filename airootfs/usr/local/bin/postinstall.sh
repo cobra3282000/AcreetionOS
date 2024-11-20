@@ -39,4 +39,4 @@ chown -R $name:$name /home/$name/.config
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 
 mv /resolv.conf /etc/resolv.conf
-
+chattr +i /etc/resolv.conf
