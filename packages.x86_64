@@ -149,7 +149,7 @@ mate-icon-theme-faenza
 # libkf6crash-devel
 glu
 calamaresos
-calamares-config
+calamares-conf
 gnome-disk-utility
 fastfetch
 # cinnamon-configs
@@ -168,3 +168,4 @@ debugedit
 fakeroot
 timeshift
 cosmic-terminal
+gnutls
