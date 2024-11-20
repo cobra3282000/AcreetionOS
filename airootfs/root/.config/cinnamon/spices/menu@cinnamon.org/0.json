@@ -107,7 +107,7 @@
         "description": "Text",
         "tooltip": "Enter custom text to show in the panel.",
         "dependency": "menu-custom",
-        "value": "Linux Grandpa (Asshole)"
+        "value": "Acreetion OS"
     },
     "show-category-icons": {
         "type": "switch",
