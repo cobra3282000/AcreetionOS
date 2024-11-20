@@ -123,7 +123,7 @@ muffin
 nemo
 xdg-desktop-portal-xapp
 xdg-user-dirs-gtk
-gnome-terminal
+#gnome-terminal
 xorg
 lightdm
 lightdm-gtk-greeter
@@ -167,4 +167,4 @@ xarchiver
 debugedit
 fakeroot
 timeshift
-
+cosmic-terminal
