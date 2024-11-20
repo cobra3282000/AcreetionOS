@@ -38,5 +38,5 @@ chown -R $name:$name /home/$name/.config
 
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 
-mv /resolve.conf /etc/resolve.conf
+mv /resolv.conf /etc/resolv.conf
 
