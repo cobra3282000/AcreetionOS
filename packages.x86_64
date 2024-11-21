@@ -169,3 +169,5 @@ fakeroot
 timeshift
 cosmic-terminal
 gnutls
+glib-networking
+
