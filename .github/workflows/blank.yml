@@ -16,8 +16,8 @@ jobs:
       contents: write # Needed for creating releases
     
     steps:
-      - name: Install archiso
-        run: pacman -Syy archiso --noconfirm
+      - name: Install Dependencies
+        run: pacman -Syy archiso bash --noconfirm
 
       - name: Build ISO
         run: bash build.sh
