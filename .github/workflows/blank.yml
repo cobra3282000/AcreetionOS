@@ -1,10 +1,8 @@
 name: Build and Release
-
 on:
   push:
     tags:
       - 'v*' # Trigger on version tags
-
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -16,9 +14,12 @@ jobs:
       contents: write # Needed for creating releases
     
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Install Dependencies
         run: pacman -Syy archiso bash --noconfirm
-
+        
       - name: Build ISO
         run: bash build.sh
           
@@ -29,7 +30,6 @@ jobs:
           name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
-          # If your script generates files you want to include in the release:
           files: |
             dist/*
             *.zip
