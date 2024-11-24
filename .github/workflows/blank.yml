@@ -1,31 +1,45 @@
-# This is a basic workflow to help you get started with Actions
+name: Build and Release
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - 'v*' # Trigger on version tags
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: arch-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  build-and-release:
+    runs-on: ubuntu-latest
+    container: 
+      image: archlinux:latest
+      options: --privileged
+    
+    permissions:
+      contents: write # Needed for creating releases
+    
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Update System
+        run: |
+          pacman -Syy archiso --noconfirm
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: pacman -Syy archiso --noconfirm
-        run: bash build.sh
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build ISO
+        run: |
+          build bash
+      - name: Run script
+        run: python your_script.py
+        
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          # If your script generates files you want to include in the release:
+          files: |
+            dist/*
+            *.zip
+            *.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
