@@ -25,7 +25,7 @@ jobs:
 
       - name: Build ISO
         run: |
-          build bash
+        bash build.sh
           
       - name: Create Release
         id: create_release
