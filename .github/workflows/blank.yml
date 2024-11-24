@@ -20,12 +20,22 @@ jobs:
           
       - name: Install Dependencies
         run: |
-          sudo pacman -Sy --noconfirm archiso base-devel # Add other packages you need
+          sudo pacman -Syu --noconfirm
+          sudo pacman -S --noconfirm archiso base-devel
         
+      - name: Debug Directory
+        run: |
+          pwd
+          ls -la
+          
       - name: Build ISO
         run: |
-          chmod +x build.sh
-          ./build.sh
+          chmod +x ./build.sh  # Make script executable
+          bash ./build.sh      # Explicitly use bash to run the script
+          
+      - name: List Generated Files
+        run: |
+          ls -la
           
       - name: Create Release
         id: create_release
