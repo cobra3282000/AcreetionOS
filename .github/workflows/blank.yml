@@ -2,7 +2,7 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*' # Trigger on version tags
+      - 'v*'
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -11,17 +11,29 @@ jobs:
       options: --privileged
     
     permissions:
-      contents: write # Needed for creating releases
+      contents: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
+      - name: Debug - List directory contents
+        run: |
+          pwd
+          ls -la
+          
       - name: Install Dependencies
-        run: pacman -Syy archiso bash --noconfirm
-        
+        run: |
+          pacman -Sy --noconfirm archiso bash
+          
+      - name: Debug - Check script existence
+        run: |
+          ls -la build.sh || echo "build.sh not found"
+          
       - name: Build ISO
-        run: bash build.sh
+        run: |
+          chmod +x build.sh
+          ./build.sh
           
       - name: Create Release
         id: create_release
