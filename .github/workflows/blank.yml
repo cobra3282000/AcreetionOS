@@ -16,16 +16,11 @@ jobs:
       contents: write # Needed for creating releases
     
     steps:
-      - name: Update System
-        run: |
-          pacman -Syy archiso --noconfirm
-
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Install archiso
+        run: pacman -Syy archiso --noconfirm
 
       - name: Build ISO
-        run: |
-        bash build.sh
+        run: bash build.sh
           
       - name: Create Release
         id: create_release
