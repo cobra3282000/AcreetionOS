@@ -6,30 +6,22 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    container: 
-      image: archlinux:latest
-      options: --privileged
-    
     permissions:
       contents: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Debug - List directory contents
-        run: |
-          pwd
-          ls -la
+        
+      - name: Setup Arch Linux
+        uses: 2m/arch-pkgbuild-builder@v1.16
+        with:
+          target: pkgbuild
           
       - name: Install Dependencies
         run: |
-          pacman -Sy --noconfirm archiso bash
-          
-      - name: Debug - Check script existence
-        run: |
-          ls -la build.sh || echo "build.sh not found"
-          
+          sudo pacman -Sy --noconfirm archiso base-devel # Add other packages you need
+        
       - name: Build ISO
         run: |
           chmod +x build.sh
