@@ -186,3 +186,5 @@ xfconf
 zlib
 lib32-nettle
 #nettle
+mkinitcpio-firmware
+
