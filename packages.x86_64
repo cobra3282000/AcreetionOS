@@ -2,7 +2,7 @@ alsa-utils
 amd-ucode
 arch-install-scripts
 dracut
-# archiso 
+archiso 
 b43-fwcutter
 base
 bind
@@ -186,5 +186,3 @@ xfconf
 zlib
 lib32-nettle
 #nettle
-mkinitcpio-firmware
-
