@@ -7,19 +7,18 @@ desklet-snap-interval=25
 desktop-effects-close='fly'
 desktop-effects-map='fly'
 desktop-effects-minimize='fly'
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:5:xapp-status@cinnamon.org:4', 'panel1:right:6:notifications@cinnamon.org:5', 'panel1:right:7:printers@cinnamon.org:6', 'panel1:right:8:removable-drives@cinnamon.org:7', 'panel1:right:9:keyboard@cinnamon.org:8', 'panel1:right:10:favorites@cinnamon.org:9', 'panel1:right:12:sound@cinnamon.org:11', 'panel1:right:13:power@cinnamon.org:12', 'panel1:right:14:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:3:download-and-upload-speed@cardsurf:15']
-enabled-desklets=['cpuload@kimse:1:-4.320648193359375:533.3499755859375', 'clocket@tirtha:2:334.3408508300781:-23.97314453125']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:1:systray@cinnamon.org:3', 'panel1:right:2:xapp-status@cinnamon.org:4', 'panel1:right:3:notifications@cinnamon.org:5', 'panel1:right:4:printers@cinnamon.org:6', 'panel1:right:5:removable-drives@cinnamon.org:7', 'panel1:right:6:keyboard@cinnamon.org:8', 'panel1:right:7:favorites@cinnamon.org:9', 'panel1:right:8:network@cinnamon.org:10', 'panel1:right:9:sound@cinnamon.org:11', 'panel1:right:10:power@cinnamon.org:12', 'panel1:right:11:calendar@cinnamon.org:13', 'panel1:right:12:cornerbar@cinnamon.org:14', 'panel1:right:0:download-and-upload-speed@cardsurf:15']
+enabled-desklets=['cpuload@kimse:1:597.6000366210938:290.91375732421875', 'clocket@tirtha:2:9.744148254394531:294.3482971191406']
 enabled-extensions=['compiz-windows-effect@hermes83.github.com', 'CinnamonBurnMyWindows@klangman']
 favorite-apps=['firefox.desktop', 'cinnamon-settings.desktop', 'com.system76.CosmicTerm.desktop', 'nemo.desktop']
-next-applet-id=19
+next-applet-id=16
 next-desklet-id=3
 panel-edit-mode=false
-panel-zone-icon-sizes='[{"panelId": 1, "left": -1, "center": 48, "right": 32}]'
-panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 30, "center": 35, "right": 35}]'
-panel-zone-text-sizes='[{"panelId": 1, "left": 10.5, "center": 10.0, "right": 10.0}]'
+panel-zone-icon-sizes='[{"panelId": 1, "left": -1, "center": 48, "right": 48}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 30, "center": 35, "right": 40}]'
+panel-zone-text-sizes='[{"panelId": 1, "left": 10.0, "center": 16.0, "right": 16.0}]'
 panels-autohide=['1:intel']
-panels-height=['1:27']
-show-media-keys-osd='large'
+panels-height=['1:49']
 window-effect-speed=1
 
 [cinnamon-session]
@@ -33,13 +32,10 @@ delay=15
 image-source='directory:///backgrounds'
 
 [desktop/interface]
-cursor-size=24
-gtk-theme='Adapta-Nokto'
+cursor-size=44
+gtk-theme='CBlack'
 icon-theme='AdwaitaLegacy'
-text-scaling-factor=0.90000000000000002
-
-[desktop/notifications]
-notification-duration=10
+text-scaling-factor=1.5000000000000004
 
 [desktop/peripherals/keyboard]
 numlock-state=true
@@ -95,4 +91,4 @@ button-power='shutdown'
 sleep-display-ac=0
 
 [theme]
-name='Adara-Dark'
+name='cinnamon'
