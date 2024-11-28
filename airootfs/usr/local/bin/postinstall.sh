@@ -41,3 +41,9 @@ cp -r /cinnamon-configs/.bashrc /root
 
 mv /resolv.conf /etc/resolv.conf
 chattr +i /etc/resolv.conf
+
+fix boot problems and kernel install problems.
+
+cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
+
+
