@@ -5,4 +5,7 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   exit 1
 fi
 
+export GI_TYPELIB_PATH="/usr/lib/cinnamon-screensaver/cinnamon-screensaver/girepository-1.0"
+export LD_LIBRARY_PATH="/usr/lib/cinnamon-screensaver/cinnamon-screensaver"
+
 exec /usr/share/cinnamon-screensaver/cinnamon-screensaver-main.py "$@"
