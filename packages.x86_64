@@ -96,7 +96,7 @@ sof-firmware
 squashfs-tools
 sudo
 syslinux
-systemd-resolvconf
+#systemd-resolvconf
 tcpdump
 testdisk
 tpm2-tools
@@ -142,7 +142,7 @@ qt6-svg
 qt6-tools
 qt6-translations
 qt6-wayland
-gedit
+#gedit
 gnome-system-monitor
 mate-icon-theme-faenza
 #numix-themes
@@ -151,19 +151,19 @@ glu
 calamaresos
 calamares-config
 gnome-disk-utility
-fastfetch
+# fastfetch
 # cinnamon-configs
-webapp-manager
+# webapp-manager
 cups
 kpmcore
 electron31
 networkmanager
 samba
-vlc
+# vlc
 yay-bin
-#libpamac-aur
+# libpamac-aur
 pamac-aur-git
-xarchiver
+# xarchiver
 debugedit
 fakeroot
 timeshift
@@ -181,8 +181,9 @@ mesa
 ocl-icd
 opencl-headers
 vulkan-headers
-wayland
+#wayland
 xfconf
 zlib
 lib32-nettle
 nettle
+# systemd-resolvconf
