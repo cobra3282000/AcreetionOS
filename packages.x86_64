@@ -1,7 +1,8 @@
 alsa-utils
 amd-ucode
+#intel-compute-runtime
 arch-install-scripts
-dracut
+#dracut
 #archiso 
 b43-fwcutter
 base
@@ -84,7 +85,7 @@ pcsclite
 ppp
 pptpclient
 pv
-qemu-guest-agent
+#qemu-guest-agent
 reflector
 rp-pppoe
 rsync
@@ -105,7 +106,7 @@ udftools
 usb_modeswitch
 usbmuxd
 usbutils
-virtualbox-guest-utils-nox
+#virtualbox-guest-utils-nox
 vpnc
 wireless-regdb
 wireless_tools
@@ -120,7 +121,7 @@ cinnamon-session
 cinnamon-settings-daemon
 cjs
 muffin
-nemo
+#nemo
 xdg-desktop-portal-xapp
 xdg-user-dirs-gtk
 #gnome-terminal
@@ -128,6 +129,7 @@ xorg
 lightdm
 lightdm-gtk-greeter
 pipewire
+wireplumber
 pavucontrol
 # firefox
 qt6-multimedia-ffmpeg
@@ -143,7 +145,7 @@ qt6-tools
 qt6-translations
 qt6-wayland
 #gedit
-gnome-system-monitor
+# gnome-system-monitor
 # mate-icon-theme-faenza
 #numix-themes
 #libkf6crash-devel
