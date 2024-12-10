@@ -85,7 +85,7 @@ pcsclite
 ppp
 pptpclient
 pv
-#qemu-guest-agent
+qemu-guest-agent
 reflector
 rp-pppoe
 rsync
@@ -106,7 +106,7 @@ udftools
 usb_modeswitch
 usbmuxd
 usbutils
-#virtualbox-guest-utils-nox
+virtualbox-guest-utils-nox
 vpnc
 wireless-regdb
 wireless_tools

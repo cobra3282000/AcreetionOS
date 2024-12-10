@@ -5,7 +5,7 @@ iso_name="AcreetionOS"
 iso_label="acreetionOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Acreetion OS"
 iso_application="Acreetion OS Install Media"
-iso_version="0.0.1 Beta"
+iso_version="1.0"
 install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito'
