@@ -128,7 +128,8 @@ xdg-user-dirs-gtk
 xorg
 lightdm
 lightdm-gtk-greeter
-pipewire
+#pipewire
+pipewire-pulse
 wireplumber
 pavucontrol
 # firefox

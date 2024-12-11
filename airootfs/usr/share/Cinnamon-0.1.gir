@@ -11,7 +11,9 @@ and/or use gtk-doc annotations.  -->
   <include name="ClutterX11" version="0"/>
   <include name="Cogl" version="0"/>
   <include name="CoglPango" version="0"/>
+  <include name="Gcr" version="3"/>
   <include name="Meta" version="0"/>
+  <include name="NM" version="1.0"/>
   <include name="PolkitAgent" version="1.0"/>
   <include name="St" version="1.0"/>
   <package name="cinnamon"/>
@@ -3601,7 +3603,7 @@ out-of-date timestamp.</doc>
           <doc xml:space="preserve"
                filename="src/cinnamon-global.c"
                line="1376">the pid of the cinnamon process.</doc>
-          <type name="gint" c:type="pid_t"/>
+          <type name="pid_t" c:type="pid_t"/>
         </return-value>
         <parameters>
           <instance-parameter name="global" transfer-ownership="none">
@@ -4316,6 +4318,24 @@ behind our back (ie, during a pointer grab).</doc>
         </parameter>
       </parameters>
     </function-macro>
+    <function-macro name="IS_NETWORK_AGENT"
+                    c:identifier="CINNAMON_IS_NETWORK_AGENT"
+                    introspectable="0">
+      <source-position filename="src/cinnamon-network-agent.h" line="24"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_NETWORK_AGENT_CLASS"
+                    c:identifier="CINNAMON_IS_NETWORK_AGENT_CLASS"
+                    introspectable="0">
+      <source-position filename="src/cinnamon-network-agent.h" line="26"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
     <function-macro name="IS_PERF_LOG"
                     c:identifier="CINNAMON_IS_PERF_LOG"
                     introspectable="0">
@@ -4442,6 +4462,254 @@ behind our back (ie, during a pointer grab).</doc>
         </parameter>
       </parameters>
     </function-macro>
+    <constant name="KEYRING_SK_TAG"
+              value="setting-key"
+              c:type="CINNAMON_KEYRING_SK_TAG">
+      <source-position filename="src/cinnamon-network-agent.h" line="69"/>
+      <type name="utf8" c:type="gchar*"/>
+    </constant>
+    <constant name="KEYRING_SN_TAG"
+              value="setting-name"
+              c:type="CINNAMON_KEYRING_SN_TAG">
+      <source-position filename="src/cinnamon-network-agent.h" line="68"/>
+      <type name="utf8" c:type="gchar*"/>
+    </constant>
+    <constant name="KEYRING_UUID_TAG"
+              value="connection-uuid"
+              c:type="CINNAMON_KEYRING_UUID_TAG">
+      <source-position filename="src/cinnamon-network-agent.h" line="67"/>
+      <type name="utf8" c:type="gchar*"/>
+    </constant>
+    <class name="KeyringPrompt"
+           c:symbol-prefix="keyring_prompt"
+           c:type="CinnamonKeyringPrompt"
+           parent="GObject.Object"
+           glib:type-name="CinnamonKeyringPrompt"
+           glib:get-type="cinnamon_keyring_prompt_get_type"
+           glib:type-struct="KeyringPromptClass">
+      <source-position filename="src/cinnamon-keyring-prompt.h" line="36"/>
+      <implements name="Gcr.Prompt"/>
+      <constructor name="new" c:identifier="cinnamon_keyring_prompt_new">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="544">Create new internal prompt base</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="39"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-keyring-prompt.c"
+               line="549">new internal prompt</doc>
+          <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+        </return-value>
+      </constructor>
+      <method name="cancel" c:identifier="cinnamon_keyring_prompt_cancel">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="796">Called by implementation when the prompt is cancelled.</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="53"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="798">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="complete" c:identifier="cinnamon_keyring_prompt_complete">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="731">Called by the implementation when the prompt completes. There are various
+checks done. %TRUE is returned if the prompt actually should complete.</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="51"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-keyring-prompt.c"
+               line="738">whether the prompt completed</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="733">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_confirm_actor"
+              c:identifier="cinnamon_keyring_prompt_get_confirm_actor"
+              glib:get-property="confirm-actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="572">Get the prompt password text actor</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="46"/>
+        <return-value transfer-ownership="none" nullable="1">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-keyring-prompt.c"
+               line="578">the password actor</doc>
+          <type name="Clutter.Text" c:type="ClutterText*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="574">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_password_actor"
+              c:identifier="cinnamon_keyring_prompt_get_password_actor"
+              glib:get-property="password-actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="557">Get the prompt password text actor</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="41"/>
+        <return-value transfer-ownership="none" nullable="1">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-keyring-prompt.c"
+               line="563">the password actor</doc>
+          <type name="Clutter.Text" c:type="ClutterText*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="559">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="set_confirm_actor"
+              c:identifier="cinnamon_keyring_prompt_set_confirm_actor"
+              glib:set-property="confirm-actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="698">Set the prompt password confirmation text actor</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="48"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="700">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+          <parameter name="confirm_actor"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="701">the confirm password actor</doc>
+            <type name="Clutter.Text" c:type="ClutterText*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_password_actor"
+              c:identifier="cinnamon_keyring_prompt_set_password_actor"
+              glib:set-property="password-actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="660">Set the prompt password text actor</doc>
+        <source-position filename="src/cinnamon-keyring-prompt.h" line="43"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="662">the internal prompt</doc>
+            <type name="KeyringPrompt" c:type="CinnamonKeyringPrompt*"/>
+          </instance-parameter>
+          <parameter name="password_actor"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <doc xml:space="preserve"
+                 filename="src/cinnamon-keyring-prompt.c"
+                 line="663">the password actor</doc>
+            <type name="Clutter.Text" c:type="ClutterText*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <property name="choice-visible"
+                transfer-ownership="none"
+                default-value="FALSE">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="387">Whether the choice check box is visible or not.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <property name="confirm-actor"
+                writable="1"
+                transfer-ownership="none"
+                setter="set_confirm_actor"
+                getter="get_confirm_actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="411">Text field for confirmation password</doc>
+        <type name="Clutter.Text"/>
+      </property>
+      <property name="confirm-visible"
+                transfer-ownership="none"
+                default-value="FALSE">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="363">Whether the password confirm entry is visible or not.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <property name="password-actor"
+                writable="1"
+                transfer-ownership="none"
+                setter="set_password_actor"
+                getter="get_password_actor">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="399">Text field for password</doc>
+        <type name="Clutter.Text"/>
+      </property>
+      <property name="password-visible"
+                transfer-ownership="none"
+                default-value="FALSE">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="351">Whether the password entry is visible or not.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <property name="warning-visible"
+                transfer-ownership="none"
+                default-value="FALSE">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-keyring-prompt.c"
+             line="375">Whether the warning label is visible or not.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <glib:signal name="show-confirm">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+      </glib:signal>
+      <glib:signal name="show-password">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+      </glib:signal>
+    </class>
+    <record name="KeyringPromptClass"
+            c:type="CinnamonKeyringPromptClass"
+            glib:is-gtype-struct-for="KeyringPrompt">
+      <source-position filename="src/cinnamon-keyring-prompt.h" line="36"/>
+      <field name="parent_class">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+    </record>
     <callback name="LeisureFunction" c:type="CinnamonLeisureFunction">
       <source-position filename="src/cinnamon-global.h" line="104"/>
       <return-value transfer-ownership="none">
@@ -4456,6 +4724,224 @@ behind our back (ie, during a pointer grab).</doc>
         </parameter>
       </parameters>
     </callback>
+    <function-macro name="NETWORK_AGENT"
+                    c:identifier="CINNAMON_NETWORK_AGENT"
+                    introspectable="0">
+      <source-position filename="src/cinnamon-network-agent.h" line="23"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="NETWORK_AGENT_CLASS"
+                    c:identifier="CINNAMON_NETWORK_AGENT_CLASS"
+                    introspectable="0">
+      <source-position filename="src/cinnamon-network-agent.h" line="25"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="NETWORK_AGENT_GET_CLASS"
+                    c:identifier="CINNAMON_NETWORK_AGENT_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="src/cinnamon-network-agent.h" line="27"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <class name="NetworkAgent"
+           c:symbol-prefix="network_agent"
+           c:type="CinnamonNetworkAgent"
+           parent="NM.SecretAgentOld"
+           glib:type-name="CinnamonNetworkAgent"
+           glib:get-type="cinnamon_network_agent_get_type"
+           glib:type-struct="NetworkAgentClass">
+      <source-position filename="src/cinnamon-network-agent.h" line="41"/>
+      <implements name="Gio.AsyncInitable"/>
+      <implements name="Gio.Initable"/>
+      <method name="add_vpn_secret"
+              c:identifier="cinnamon_network_agent_add_vpn_secret">
+        <source-position filename="src/cinnamon-network-agent.h" line="46"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <type name="NetworkAgent" c:type="CinnamonNetworkAgent*"/>
+          </instance-parameter>
+          <parameter name="request_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="setting_key" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="setting_value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="respond" c:identifier="cinnamon_network_agent_respond">
+        <source-position filename="src/cinnamon-network-agent.h" line="54"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <type name="NetworkAgent" c:type="CinnamonNetworkAgent*"/>
+          </instance-parameter>
+          <parameter name="request_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="response" transfer-ownership="none">
+            <type name="NetworkAgentResponse"
+                  c:type="CinnamonNetworkAgentResponse"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="search_vpn_plugin"
+              c:identifier="cinnamon_network_agent_search_vpn_plugin"
+              glib:finish-func="search_vpn_plugin_finish">
+        <source-position filename="src/cinnamon-network-agent.h" line="58"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <type name="NetworkAgent" c:type="CinnamonNetworkAgent*"/>
+          </instance-parameter>
+          <parameter name="service" transfer-ownership="none">
+            <type name="utf8" c:type="const char*"/>
+          </parameter>
+          <parameter name="callback"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1"
+                     scope="async"
+                     closure="2">
+            <type name="Gio.AsyncReadyCallback" c:type="GAsyncReadyCallback"/>
+          </parameter>
+          <parameter name="user_data"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <type name="gpointer" c:type="gpointer"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="search_vpn_plugin_finish"
+              c:identifier="cinnamon_network_agent_search_vpn_plugin_finish"
+              throws="1">
+        <source-position filename="src/cinnamon-network-agent.h" line="62"/>
+        <return-value transfer-ownership="full" nullable="1">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-network-agent.c"
+               line="554">The found plugin or %NULL</doc>
+          <type name="NM.VpnPluginInfo" c:type="NMVpnPluginInfo*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <type name="NetworkAgent" c:type="CinnamonNetworkAgent*"/>
+          </instance-parameter>
+          <parameter name="result" transfer-ownership="none">
+            <type name="Gio.AsyncResult" c:type="GAsyncResult*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_password"
+              c:identifier="cinnamon_network_agent_set_password">
+        <source-position filename="src/cinnamon-network-agent.h" line="50"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <type name="NetworkAgent" c:type="CinnamonNetworkAgent*"/>
+          </instance-parameter>
+          <parameter name="request_id" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="setting_key" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="setting_value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <field name="parent_instance" readable="0" private="1">
+        <type name="NM.SecretAgentOld" c:type="NMSecretAgentOld"/>
+      </field>
+      <field name="priv" readable="0" private="1">
+        <type name="NetworkAgentPrivate"
+              c:type="CinnamonNetworkAgentPrivate*"/>
+      </field>
+      <glib:signal name="cancel-request">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+      <glib:signal name="new-request">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="p0" transfer-ownership="none">
+            <type name="NM.Connection"/>
+          </parameter>
+          <parameter name="p1" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="p2" transfer-ownership="none">
+            <array>
+              <type name="utf8"/>
+            </array>
+          </parameter>
+          <parameter name="p3" transfer-ownership="none">
+            <type name="gint" c:type="gint"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="NetworkAgentClass"
+            c:type="CinnamonNetworkAgentClass"
+            glib:is-gtype-struct-for="NetworkAgent">
+      <source-position filename="src/cinnamon-network-agent.h" line="41"/>
+      <field name="parent_class" readable="0" private="1">
+        <type name="NM.SecretAgentOldClass" c:type="NMSecretAgentOldClass"/>
+      </field>
+    </record>
+    <record name="NetworkAgentPrivate"
+            c:type="CinnamonNetworkAgentPrivate"
+            disguised="1"
+            opaque="1">
+      <source-position filename="src/cinnamon-network-agent.h" line="20"/>
+    </record>
+    <enumeration name="NetworkAgentResponse"
+                 c:type="CinnamonNetworkAgentResponse">
+      <source-position filename="src/cinnamon-network-agent.h" line="16"/>
+      <member name="confirmed"
+              value="0"
+              c:identifier="CINNAMON_NETWORK_AGENT_CONFIRMED">
+      </member>
+      <member name="user_canceled"
+              value="1"
+              c:identifier="CINNAMON_NETWORK_AGENT_USER_CANCELED">
+      </member>
+      <member name="internal_error"
+              value="2"
+              c:identifier="CINNAMON_NETWORK_AGENT_INTERNAL_ERROR">
+      </member>
+    </enumeration>
     <function-macro name="PERF_LOG"
                     c:identifier="CINNAMON_PERF_LOG"
                     introspectable="0">
@@ -6419,6 +6905,30 @@ of the async grabbing</doc>
         </parameter>
       </parameters>
     </callback>
+    <class name="SecureTextBuffer"
+           c:symbol-prefix="secure_text_buffer"
+           c:type="CinnamonSecureTextBuffer"
+           parent="Clutter.TextBuffer"
+           glib:type-name="CinnamonSecureTextBuffer"
+           glib:get-type="cinnamon_secure_text_buffer_get_type"
+           glib:type-struct="SecureTextBufferClass">
+      <source-position filename="src/cinnamon-secure-text-buffer.h" line="33"/>
+      <constructor name="new" c:identifier="cinnamon_secure_text_buffer_new">
+        <source-position filename="src/cinnamon-secure-text-buffer.h"
+                         line="36"/>
+        <return-value transfer-ownership="full">
+          <type name="Clutter.TextBuffer" c:type="ClutterTextBuffer*"/>
+        </return-value>
+      </constructor>
+    </class>
+    <record name="SecureTextBufferClass"
+            c:type="CinnamonSecureTextBufferClass"
+            glib:is-gtype-struct-for="SecureTextBuffer">
+      <source-position filename="src/cinnamon-secure-text-buffer.h" line="33"/>
+      <field name="parent_class">
+        <type name="Clutter.TextBufferClass" c:type="ClutterTextBufferClass"/>
+      </field>
+    </record>
     <class name="Slicer"
            c:symbol-prefix="slicer"
            c:type="CinnamonSlicer"
@@ -7444,7 +7954,7 @@ most of these should be override-redirect.</doc>
     <function name="breakpoint" c:identifier="cinnamon_breakpoint">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="878">Using G_BREAKPOINT(), interrupt the current process.  This is useful
+           line="881">Using G_BREAKPOINT(), interrupt the current process.  This is useful
 in conjunction with a debugger such as gdb.</doc>
       <source-position filename="src/cinnamon-util.h" line="62"/>
       <return-value transfer-ownership="none">
@@ -7576,7 +8086,7 @@ have it also track through startup-notification.</doc>
     <function name="get_event_state" c:identifier="cinnamon_get_event_state">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="610">Gets the current state of the event (the set of modifier keys that
+           line="613">Gets the current state of the event (the set of modifier keys that
 are pressed down). This is a wrapper around
 clutter_event_get_state() that strips out any un-declared modifier
 flags, to make gjs happy; see
@@ -7585,14 +8095,14 @@ https://bugzilla.gnome.org/show_bug.cgi?id=597292.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="620">the state from the event</doc>
+             line="623">the state from the event</doc>
         <type name="Clutter.ModifierType" c:type="ClutterModifierType"/>
       </return-value>
       <parameters>
         <parameter name="event" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="612">a #ClutterEvent</doc>
+               line="615">a #ClutterEvent</doc>
           <type name="Clutter.Event" c:type="ClutterEvent*"/>
         </parameter>
       </parameters>
@@ -7601,7 +8111,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=597292.</doc>
               c:identifier="cinnamon_get_file_contents_utf8">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="738">Asynchronously load the contents of a file as a NUL terminated
+           line="741">Asynchronously load the contents of a file as a NUL terminated
 string, validating it as UTF-8.  Embedded NUL characters count as
 invalid content.</doc>
       <source-position filename="src/cinnamon-util.h" line="47"/>
@@ -7612,7 +8122,7 @@ invalid content.</doc>
         <parameter name="path" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="740">UTF-8 encoded filename path</doc>
+               line="743">UTF-8 encoded filename path</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="callback"
@@ -7621,7 +8131,7 @@ invalid content.</doc>
                    closure="2">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="741">The callback to call when finished</doc>
+               line="744">The callback to call when finished</doc>
           <type name="FileContentsCallback"
                 c:type="CinnamonFileContentsCallback"/>
         </parameter>
@@ -7631,7 +8141,7 @@ invalid content.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="742">data to pass with the callback</doc>
+               line="745">data to pass with the callback</doc>
           <type name="gpointer" c:type="gpointer"/>
         </parameter>
       </parameters>
@@ -7643,21 +8153,21 @@ invalid content.</doc>
               throws="1">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="652">Synchronously load the contents of a file as a NUL terminated
+           line="655">Synchronously load the contents of a file as a NUL terminated
 string, validating it as UTF-8.  Embedded NUL characters count as
 invalid content.</doc>
       <source-position filename="src/cinnamon-util.h" line="33"/>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="661">File contents</doc>
+             line="664">File contents</doc>
         <type name="utf8" c:type="char*"/>
       </return-value>
       <parameters>
         <parameter name="path" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="654">UTF-8 encoded filename path</doc>
+               line="657">UTF-8 encoded filename path</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -7669,14 +8179,14 @@ invalid content.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="899">%TRUE on success</doc>
+             line="902">%TRUE on success</doc>
         <type name="gboolean" c:type="gboolean"/>
       </return-value>
       <parameters>
         <parameter name="data" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="892">description of provider</doc>
+               line="895">description of provider</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="name"
@@ -7685,7 +8195,7 @@ invalid content.</doc>
                    transfer-ownership="full">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="893">location to store a display name</doc>
+               line="896">location to store a display name</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
         <parameter name="url"
@@ -7694,7 +8204,7 @@ invalid content.</doc>
                    transfer-ownership="full">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="894">location to store template of url</doc>
+               line="897">location to store template of url</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
         <parameter name="langs"
@@ -7703,7 +8213,7 @@ invalid content.</doc>
                    transfer-ownership="full">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="895">list of supported languages</doc>
+               line="898">list of supported languages</doc>
           <type name="GLib.List" c:type="GList**">
             <type name="utf8"/>
           </type>
@@ -7714,7 +8224,7 @@ invalid content.</doc>
                    transfer-ownership="full">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="896">location to store uri</doc>
+               line="899">location to store uri</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
       </parameters>
@@ -7723,7 +8233,7 @@ invalid content.</doc>
               c:identifier="cinnamon_shader_effect_set_double_uniform">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="1018">Set a double uniform on a ClutterShaderEffect.
+           line="1021">Set a double uniform on a ClutterShaderEffect.
 
 The problem here is that JavaScript doesn't have more than
 one number type, and gjs tries to automatically guess what
@@ -7738,19 +8248,19 @@ in GLSL.</doc>
         <parameter name="effect" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="1020">The #ClutterShaderEffect</doc>
+               line="1023">The #ClutterShaderEffect</doc>
           <type name="Clutter.ShaderEffect" c:type="ClutterShaderEffect*"/>
         </parameter>
         <parameter name="name" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="1021">The name of the uniform</doc>
+               line="1024">The name of the uniform</doc>
           <type name="utf8" c:type="const gchar*"/>
         </parameter>
         <parameter name="value" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="1022">The value to set it to.</doc>
+               line="1025">The value to set it to.</doc>
           <type name="gdouble" c:type="gdouble"/>
         </parameter>
       </parameters>
@@ -7788,7 +8298,7 @@ in GLSL.</doc>
     <function name="util_format_date" c:identifier="cinnamon_util_format_date">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="508">Formats a date for the current locale. This should be
+           line="511">Formats a date for the current locale. This should be
 used instead of the Spidermonkey Date.toLocaleFormat()
 extension because Date.toLocaleFormat() is buggy for
 Unicode format strings:
@@ -7797,7 +8307,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=508783</doc>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="521">the formatted date. If the date is
+             line="524">the formatted date. If the date is
  outside of the range of a GDateTime (which contains
  any plausible dates we actually care about), will
  return an empty string.</doc>
@@ -7807,14 +8317,14 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=508783</doc>
         <parameter name="format" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="510">a strftime-style string format, as parsed by
+               line="513">a strftime-style string format, as parsed by
   g_date_time_format()</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="time_ms" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="512">milliseconds since 1970-01-01 00:00:00 UTC; the
+               line="515">milliseconds since 1970-01-01 00:00:00 UTC; the
   value returned by Date.getTime()</doc>
           <type name="gint64" c:type="gint64"/>
         </parameter>
@@ -7826,20 +8336,20 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=508783</doc>
       <return-value transfer-ownership="full" nullable="1">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="801">a new #ClutterContent</doc>
+             line="804">a new #ClutterContent</doc>
         <type name="Clutter.Content" c:type="ClutterContent*"/>
       </return-value>
       <parameters>
         <parameter name="window_actor" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="798">a #MetaWindowActor</doc>
+               line="801">a #MetaWindowActor</doc>
           <type name="Meta.WindowActor" c:type="MetaWindowActor*"/>
         </parameter>
         <parameter name="window_rect" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="799">a #MetaRectangle</doc>
+               line="802">a #MetaRectangle</doc>
           <type name="Meta.Rectangle" c:type="MetaRectangle*"/>
         </parameter>
       </parameters>
@@ -7848,20 +8358,20 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=508783</doc>
               c:identifier="cinnamon_util_get_icon_for_uri">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="318">Look up the icon that should be associated with a given URI.  Handles
+           line="321">Look up the icon that should be associated with a given URI.  Handles
 various special GNOME-internal cases like x-nautilus-search, etc.</doc>
       <source-position filename="src/cinnamon-util.h" line="13"/>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="325">A new #GIcon</doc>
+             line="328">A new #GIcon</doc>
         <type name="Gio.Icon" c:type="GIcon*"/>
       </return-value>
       <parameters>
         <parameter name="text_uri" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="320">A URI</doc>
+               line="323">A URI</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -7882,7 +8392,7 @@ various special GNOME-internal cases like x-nautilus-search, etc.</doc>
               c:identifier="cinnamon_util_get_transformed_allocation">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="453">This function is similar to a combination of clutter_actor_get_transformed_position(),
+           line="456">This function is similar to a combination of clutter_actor_get_transformed_position(),
 and clutter_actor_get_transformed_size(), but unlike
 clutter_actor_get_transformed_size(), it always returns a transform
 of the current allocation, while clutter_actor_get_transformed_size() returns
@@ -7900,7 +8410,7 @@ and also works around limitations in the GJS binding of arrays.</doc>
         <parameter name="actor" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="455">a #ClutterActor</doc>
+               line="458">a #ClutterActor</doc>
           <type name="Clutter.Actor" c:type="ClutterActor*"/>
         </parameter>
         <parameter name="box"
@@ -7909,7 +8419,7 @@ and also works around limitations in the GJS binding of arrays.</doc>
                    transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="456">location to store returned box in stage coordinates</doc>
+               line="459">location to store returned box in stage coordinates</doc>
           <type name="Clutter.ActorBox" c:type="ClutterActorBox*"/>
         </parameter>
       </parameters>
@@ -7918,14 +8428,14 @@ and also works around limitations in the GJS binding of arrays.</doc>
               c:identifier="cinnamon_util_get_week_start">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="543">Gets the first week day for the current locale, expressed as a
+           line="546">Gets the first week day for the current locale, expressed as a
 number in the range 0..6, representing week days from Sunday to
 Saturday.</doc>
       <source-position filename="src/cinnamon-util.h" line="21"/>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="550">A number representing the first week day for the current
+             line="553">A number representing the first week day for the current
          locale</doc>
         <type name="gint" c:type="int"/>
       </return-value>
@@ -7934,7 +8444,7 @@ Saturday.</doc>
               c:identifier="cinnamon_util_set_hidden_from_pick">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="420">If @hidden is %TRUE, hide @actor from pick even with a mode of
+           line="423">If @hidden is %TRUE, hide @actor from pick even with a mode of
 %CLUTTER_PICK_ALL; if @hidden is %FALSE, unhide @actor.</doc>
       <source-position filename="src/cinnamon-util.h" line="15"/>
       <return-value transfer-ownership="none">
@@ -7944,14 +8454,44 @@ Saturday.</doc>
         <parameter name="actor" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="422">A #ClutterActor</doc>
+               line="425">A #ClutterActor</doc>
           <type name="Clutter.Actor" c:type="ClutterActor*"/>
         </parameter>
         <parameter name="hidden" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="423">Whether @actor should be hidden from pick</doc>
+               line="426">Whether @actor should be hidden from pick</doc>
           <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="util_wifexited" c:identifier="cinnamon_util_wifexited">
+      <doc xml:space="preserve"
+           filename="src/cinnamon-util.c"
+           line="1049">Implements libc standard WIFEXITED, that cannot be used JS
+code.</doc>
+      <source-position filename="src/cinnamon-util.h" line="75"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="src/cinnamon-util.c"
+             line="1056">TRUE if the process exited normally, FALSE otherwise</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="status" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-util.c"
+               line="1051">the status returned by wait() or waitpid()</doc>
+          <type name="gint" c:type="int"/>
+        </parameter>
+        <parameter name="exit"
+                   direction="out"
+                   caller-allocates="0"
+                   transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="src/cinnamon-util.c"
+               line="1052">the actual exit status of the process</doc>
+          <type name="gint" c:type="int*"/>
         </parameter>
       </parameters>
     </function>
@@ -7960,26 +8500,26 @@ Saturday.</doc>
               throws="1">
       <doc xml:space="preserve"
            filename="src/cinnamon-util.c"
-           line="632">Write a string to a GOutputStream as UTF-8. This is a workaround
+           line="635">Write a string to a GOutputStream as UTF-8. This is a workaround
 for not having binary buffers in GJS.</doc>
       <source-position filename="src/cinnamon-util.h" line="29"/>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="src/cinnamon-util.c"
-             line="641">%TRUE if write succeeded</doc>
+             line="644">%TRUE if write succeeded</doc>
         <type name="gboolean" c:type="gboolean"/>
       </return-value>
       <parameters>
         <parameter name="stream" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="634">a #GOutputStream</doc>
+               line="637">a #GOutputStream</doc>
           <type name="Gio.OutputStream" c:type="GOutputStream*"/>
         </parameter>
         <parameter name="str" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/cinnamon-util.c"
-               line="635">a UTF-8 string to write to @stream</doc>
+               line="638">a UTF-8 string to write to @stream</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>

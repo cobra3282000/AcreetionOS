@@ -2268,19 +2268,19 @@ the provided API.</doc>
       <constructor name="new" c:identifier="st_entry_new">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="972">Create a new #StEntry with the specified entry</doc>
+             line="1111">Create a new #StEntry with the specified entry</doc>
         <source-position filename="src/st/st-entry.h" line="67"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-entry.c"
-               line="978">a new #StEntry</doc>
+               line="1117">a new #StEntry</doc>
           <type name="Widget" c:type="StWidget*"/>
         </return-value>
         <parameters>
           <parameter name="text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="974">text to set the entry to</doc>
+                 line="1113">text to set the entry to</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -2312,12 +2312,12 @@ the provided API.</doc>
               glib:get-property="clutter-text">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1050">Retrieve the internal #ClutterText so that extra parameters can be set</doc>
+             line="1171">Retrieve the internal #ClutterText so that extra parameters can be set</doc>
         <source-position filename="src/st/st-entry.h" line="71"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-entry.c"
-               line="1056">the #ClutterText used by #StEntry. The entry is
+               line="1177">the #ClutterText used by #StEntry. The entry is
 owned by the #StEntry and should not be unref'ed by the application.</doc>
           <type name="Clutter.Actor" c:type="ClutterActor*"/>
         </return-value>
@@ -2325,7 +2325,26 @@ owned by the #StEntry and should not be unref'ed by the application.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1052">a #StEntry</doc>
+                 line="1173">a #StEntry</doc>
+            <type name="Entry" c:type="StEntry*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_hint_actor"
+              c:identifier="st_entry_get_hint_actor"
+              glib:get-property="hint-actor">
+        <source-position filename="src/st/st-entry.h" line="87"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="src/st/st-entry.c"
+               line="1423">a #ClutterActor</doc>
+          <type name="Clutter.Actor" c:type="ClutterActor*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-entry.c"
+                 line="1421">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
         </parameters>
@@ -2335,12 +2354,12 @@ owned by the #StEntry and should not be unref'ed by the application.</doc>
               glib:get-property="hint-text">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1100">Gets the text that is displayed when the entry is empty and unfocused</doc>
+             line="1211">Gets the text that is displayed when the entry is empty and unfocused</doc>
         <source-position filename="src/st/st-entry.h" line="75"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-entry.c"
-               line="1106">the current value of the hint property. This string is owned by the
+               line="1217">the current value of the hint property. This string is owned by the
 #StEntry and should not be freed or modified.</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
@@ -2348,7 +2367,7 @@ owned by the #StEntry and should not be unref'ed by the application.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1102">a #StEntry</doc>
+                 line="1213">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
         </parameters>
@@ -2358,21 +2377,49 @@ owned by the #StEntry and should not be unref'ed by the application.</doc>
               glib:get-property="text">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="993">Get the text displayed on the entry</doc>
+             line="1132">Get the text displayed on the entry</doc>
         <source-position filename="src/st/st-entry.h" line="68"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-entry.c"
-               line="999">the text for the entry. This must not be freed by the application</doc>
+               line="1138">the text for the entry. This must not be freed by the application</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
         <parameters>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="995">a #StEntry</doc>
+                 line="1134">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
+        </parameters>
+      </method>
+      <method name="set_hint_actor"
+              c:identifier="st_entry_set_hint_actor"
+              glib:set-property="hint-actor">
+        <doc xml:space="preserve"
+             filename="src/st/st-entry.c"
+             line="1385">Set the hint actor of the entry to @hint_actor</doc>
+        <source-position filename="src/st/st-entry.h" line="85"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-entry.c"
+                 line="1387">a #StEntry</doc>
+            <type name="Entry" c:type="StEntry*"/>
+          </instance-parameter>
+          <parameter name="hint_actor"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <doc xml:space="preserve"
+                 filename="src/st/st-entry.c"
+                 line="1388">a #ClutterActor</doc>
+            <type name="Clutter.Actor" c:type="ClutterActor*"/>
+          </parameter>
         </parameters>
       </method>
       <method name="set_hint_text"
@@ -2380,7 +2427,7 @@ owned by the #StEntry and should not be unref'ed by the application.</doc>
               glib:set-property="hint-text">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1067">Sets the text to display when the entry is empty and unfocused. When the
+             line="1188">Sets the text to display when the entry is empty and unfocused. When the
 entry is displaying the hint, it has a pseudo class of "indeterminate".
 A value of NULL unsets the hint.</doc>
         <source-position filename="src/st/st-entry.h" line="73"/>
@@ -2391,7 +2438,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1069">a #StEntry</doc>
+                 line="1190">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="text"
@@ -2400,7 +2447,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1070">text to set as the entry hint</doc>
+                 line="1191">text to set as the entry hint</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -2408,7 +2455,7 @@ A value of NULL unsets the hint.</doc>
       <method name="set_primary_icon" c:identifier="st_entry_set_primary_icon">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1185">Set the primary icon of the entry to @icon</doc>
+             line="1303">Set the primary icon of the entry to @icon</doc>
         <source-position filename="src/st/st-entry.h" line="77"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -2417,7 +2464,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1187">a #StEntry</doc>
+                 line="1305">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="icon"
@@ -2426,7 +2473,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1188">a #ClutterActor</doc>
+                 line="1306">a #ClutterActor</doc>
             <type name="Clutter.Actor" c:type="ClutterActor*"/>
           </parameter>
         </parameters>
@@ -2435,7 +2482,7 @@ A value of NULL unsets the hint.</doc>
               c:identifier="st_entry_set_primary_icon_from_file">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1225">Set the primary icon of the entry to the given filename</doc>
+             line="1343">Set the primary icon of the entry to the given filename</doc>
         <source-position filename="src/st/st-entry.h" line="81"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -2444,7 +2491,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1227">a #StEntry</doc>
+                 line="1345">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="filename"
@@ -2453,7 +2500,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1228">filename of an icon</doc>
+                 line="1346">filename of an icon</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -2462,7 +2509,7 @@ A value of NULL unsets the hint.</doc>
               c:identifier="st_entry_set_secondary_icon">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1205">Set the secondary icon of the entry to @icon</doc>
+             line="1323">Set the secondary icon of the entry to @icon</doc>
         <source-position filename="src/st/st-entry.h" line="79"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -2471,7 +2518,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1207">a #StEntry</doc>
+                 line="1325">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="icon"
@@ -2480,7 +2527,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1208">an #ClutterActor</doc>
+                 line="1326">an #ClutterActor</doc>
             <type name="Clutter.Actor" c:type="ClutterActor*"/>
           </parameter>
         </parameters>
@@ -2489,7 +2536,7 @@ A value of NULL unsets the hint.</doc>
               c:identifier="st_entry_set_secondary_icon_from_file">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1246">Set the primary icon of the entry to the given filename</doc>
+             line="1364">Set the primary icon of the entry to the given filename</doc>
         <source-position filename="src/st/st-entry.h" line="83"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -2498,7 +2545,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1248">a #StEntry</doc>
+                 line="1366">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="filename"
@@ -2507,7 +2554,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1249">filename of an icon</doc>
+                 line="1367">filename of an icon</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -2517,7 +2564,7 @@ A value of NULL unsets the hint.</doc>
               glib:set-property="text">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="1012">Sets the text displayed on the entry</doc>
+             line="1148">Sets the text displayed on the entry</doc>
         <source-position filename="src/st/st-entry.h" line="69"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -2526,7 +2573,7 @@ A value of NULL unsets the hint.</doc>
           <instance-parameter name="entry" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1014">a #StEntry</doc>
+                 line="1150">a #StEntry</doc>
             <type name="Entry" c:type="StEntry*"/>
           </instance-parameter>
           <parameter name="text"
@@ -2535,7 +2582,7 @@ A value of NULL unsets the hint.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-entry.c"
-                 line="1015">text to set the entry to</doc>
+                 line="1151">text to set the entry to</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -2544,6 +2591,13 @@ A value of NULL unsets the hint.</doc>
                 transfer-ownership="none"
                 getter="get_clutter_text">
         <type name="Clutter.Text"/>
+      </property>
+      <property name="hint-actor"
+                writable="1"
+                transfer-ownership="none"
+                setter="set_hint_actor"
+                getter="get_hint_actor">
+        <type name="Clutter.Actor"/>
       </property>
       <property name="hint-text"
                 writable="1"
@@ -2570,7 +2624,7 @@ A value of NULL unsets the hint.</doc>
       <glib:signal name="primary-icon-clicked" when="last">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="902">Emitted when the primary icon is clicked</doc>
+             line="1034">Emitted when the primary icon is clicked</doc>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -2578,7 +2632,7 @@ A value of NULL unsets the hint.</doc>
       <glib:signal name="secondary-icon-clicked" when="last">
         <doc xml:space="preserve"
              filename="src/st/st-entry.c"
-             line="914">Emitted when the secondary icon is clicked</doc>
+             line="1046">Emitted when the secondary icon is clicked</doc>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3123,6 +3177,24 @@ the root of that group.</doc>
                     c:identifier="ST_IS_LABEL_CLASS"
                     introspectable="0">
       <source-position filename="src/st/st-label.h" line="35"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_PASSWORD_ENTRY"
+                    c:identifier="ST_IS_PASSWORD_ENTRY"
+                    introspectable="0">
+      <source-position filename="src/st/st-password-entry.h" line="33"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_PASSWORD_ENTRY_CLASS"
+                    c:identifier="ST_IS_PASSWORD_ENTRY_CLASS"
+                    introspectable="0">
+      <source-position filename="src/st/st-password-entry.h" line="35"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -4025,6 +4097,33 @@ is owned by the #StLabel and should not be unref'ed by the application.</doc>
       <source-position filename="src/st/st-private.h" line="37"/>
       <type name="gint" c:type="gint"/>
     </constant>
+    <function-macro name="PASSWORD_ENTRY"
+                    c:identifier="ST_PASSWORD_ENTRY"
+                    introspectable="0">
+      <source-position filename="src/st/st-password-entry.h" line="32"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PASSWORD_ENTRY_CLASS"
+                    c:identifier="ST_PASSWORD_ENTRY_CLASS"
+                    introspectable="0">
+      <source-position filename="src/st/st-password-entry.h" line="34"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PASSWORD_ENTRY_GET_CLASS"
+                    c:identifier="ST_PASSWORD_ENTRY_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="src/st/st-password-entry.h" line="36"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
     <function-macro name="POLYGON"
                     c:identifier="ST_POLYGON"
                     introspectable="0">
@@ -4052,6 +4151,155 @@ is owned by the #StLabel and should not be unref'ed by the application.</doc>
         </parameter>
       </parameters>
     </function-macro>
+    <class name="PasswordEntry"
+           c:symbol-prefix="password_entry"
+           c:type="StPasswordEntry"
+           parent="Entry"
+           glib:type-name="StPasswordEntry"
+           glib:get-type="st_password_entry_get_type"
+           glib:type-struct="PasswordEntryClass">
+      <source-position filename="src/st/st-password-entry.h" line="53"/>
+      <implements name="Atk.ImplementorIface"/>
+      <implements name="Clutter.Animatable"/>
+      <implements name="Clutter.Container"/>
+      <implements name="Clutter.Scriptable"/>
+      <constructor name="new" c:identifier="st_password_entry_new">
+        <doc xml:space="preserve"
+             filename="src/st/st-password-entry.c"
+             line="176">Create a new #StPasswordEntry.</doc>
+        <source-position filename="src/st/st-password-entry.h" line="57"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="src/st/st-password-entry.c"
+               line="181">a new #StEntry</doc>
+          <type name="Entry" c:type="StEntry*"/>
+        </return-value>
+      </constructor>
+      <method name="get_password_visible"
+              c:identifier="st_password_entry_get_password_visible"
+              glib:get-property="password-visible">
+        <doc xml:space="preserve"
+             filename="src/st/st-password-entry.c"
+             line="271">Gets whether the text is masked in the password entry.</doc>
+        <source-position filename="src/st/st-password-entry.h" line="58"/>
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="273">a #StPasswordEntry</doc>
+            <type name="PasswordEntry" c:type="StPasswordEntry*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_show_peek_icon"
+              c:identifier="st_password_entry_get_show_peek_icon"
+              glib:get-property="show-peek-icon">
+        <doc xml:space="preserve"
+             filename="src/st/st-password-entry.c"
+             line="217">Gets whether peek-icon is shown or hidden in the password entry.</doc>
+        <source-position filename="src/st/st-password-entry.h" line="61"/>
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="219">a #StPasswordEntry</doc>
+            <type name="PasswordEntry" c:type="StPasswordEntry*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="set_password_visible"
+              c:identifier="st_password_entry_set_password_visible"
+              glib:set-property="password-visible">
+        <doc xml:space="preserve"
+             filename="src/st/st-password-entry.c"
+             line="234">Sets whether to show or hide text in the password entry.</doc>
+        <source-position filename="src/st/st-password-entry.h" line="59"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="236">a #StPasswordEntry</doc>
+            <type name="PasswordEntry" c:type="StPasswordEntry*"/>
+          </instance-parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="237">#TRUE to show the password in the entry, #FALSE otherwise</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_show_peek_icon"
+              c:identifier="st_password_entry_set_show_peek_icon"
+              glib:set-property="show-peek-icon">
+        <doc xml:space="preserve"
+             filename="src/st/st-password-entry.c"
+             line="189">Sets whether to show or hide the peek-icon in the password entry.</doc>
+        <source-position filename="src/st/st-password-entry.h" line="62"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="entry" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="191">a #StPasswordEntry</doc>
+            <type name="PasswordEntry" c:type="StPasswordEntry*"/>
+          </instance-parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="src/st/st-password-entry.c"
+                 line="192">#TRUE to show the peek-icon in the entry, #FALSE otherwise</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <property name="password-visible"
+                writable="1"
+                transfer-ownership="none"
+                setter="set_password_visible"
+                getter="get_password_visible"
+                default-value="FALSE">
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <property name="show-peek-icon"
+                writable="1"
+                transfer-ownership="none"
+                setter="set_show_peek_icon"
+                getter="get_show_peek_icon"
+                default-value="TRUE">
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <field name="parent_instance" readable="0" private="1">
+        <type name="Entry" c:type="StEntry"/>
+      </field>
+      <field name="priv" readable="0" private="1">
+        <type name="PasswordEntryPrivate" c:type="StPasswordEntryPrivate*"/>
+      </field>
+    </class>
+    <record name="PasswordEntryClass"
+            c:type="StPasswordEntryClass"
+            glib:is-gtype-struct-for="PasswordEntry">
+      <source-position filename="src/st/st-password-entry.h" line="53"/>
+      <field name="parent_class">
+        <type name="EntryClass" c:type="StEntryClass"/>
+      </field>
+    </record>
+    <record name="PasswordEntryPrivate"
+            c:type="StPasswordEntryPrivate"
+            disguised="1"
+            opaque="1">
+      <source-position filename="src/st/st-password-entry.h" line="39"/>
+    </record>
     <enumeration name="PolicyType"
                  glib:type-name="StPolicyType"
                  glib:get-type="st_policy_type_get_type"
@@ -9477,14 +9725,14 @@ public API.</doc>
       <virtual-method name="get_focus_chain" invoker="get_focus_chain">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2974">Gets a list of the focusable children of @widget, in "Tab"
+             line="2986">Gets a list of the focusable children of @widget, in "Tab"
 order. By default, this returns all visible
 (as in clutter_actor_is_visible()) children of @widget.</doc>
         <source-position filename="src/st/st-widget.h" line="97"/>
         <return-value transfer-ownership="container">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2982">
+               line="2994">
   @widget's focusable children</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="Clutter.Actor"/>
@@ -9494,7 +9742,7 @@ order. By default, this returns all visible
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2976">An #StWidget</doc>
+                 line="2988">An #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9531,7 +9779,7 @@ order. By default, this returns all visible
       <virtual-method name="popup_menu" invoker="popup_menu">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1917">Asks the widget to pop-up a context menu.</doc>
+             line="1929">Asks the widget to pop-up a context menu.</doc>
         <source-position filename="src/st/st-widget.h" line="82"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -9540,7 +9788,7 @@ order. By default, this returns all visible
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1919">A #StWidget</doc>
+                 line="1931">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9560,7 +9808,7 @@ order. By default, this returns all visible
               c:identifier="st_widget_add_accessible_state">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2515">This method adds @state as one of the accessible states for
+             line="2527">This method adds @state as one of the accessible states for
 @widget. The list of states of a widget describes the current state
 of user interface element @widget and is provided so that assistive
 technologies know how to present @widget to the user.
@@ -9580,13 +9828,13 @@ the toggled state).</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2517">A #StWidget</doc>
+                 line="2529">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="state" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2518">#AtkStateType state to add</doc>
+                 line="2530">#AtkStateType state to add</doc>
             <type name="Atk.StateType" c:type="AtkStateType"/>
           </parameter>
         </parameters>
@@ -9678,7 +9926,7 @@ removes if @add is false.</doc>
               deprecated-version="3.0">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2995">Destroys all child actors from @widget.</doc>
+             line="3007">Destroys all child actors from @widget.</doc>
         <doc-deprecated xml:space="preserve">Use clutter_actor_destroy_all_children instead</doc-deprecated>
         <source-position filename="src/st/st-widget.h" line="180"/>
         <return-value transfer-ownership="none">
@@ -9688,7 +9936,7 @@ removes if @add is false.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2997">An #StWidget</doc>
+                 line="3009">An #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9696,7 +9944,7 @@ removes if @add is false.</doc>
       <method name="ensure_style" c:identifier="st_widget_ensure_style">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1686">Ensures that @widget has read its style information.</doc>
+             line="1698">Ensures that @widget has read its style information.</doc>
         <source-position filename="src/st/st-widget.h" line="146"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -9705,7 +9953,7 @@ removes if @add is false.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1688">A #StWidget</doc>
+                 line="1700">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9715,13 +9963,13 @@ removes if @add is false.</doc>
               glib:get-property="accessible-name">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2430">Gets the accessible name for this widget. See
+             line="2442">Gets the accessible name for this widget. See
 st_widget_set_accessible_name() for more information.</doc>
         <source-position filename="src/st/st-widget.h" line="198"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2437">a character string representing the accessible name
+               line="2449">a character string representing the accessible name
 of the widget.</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
@@ -9729,7 +9977,7 @@ of the widget.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2432">widget to get the accessible name for</doc>
+                 line="2444">widget to get the accessible name for</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9739,20 +9987,20 @@ of the widget.</doc>
               glib:get-property="accessible-role">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2481">Gets the #AtkRole for this widget. See
+             line="2493">Gets the #AtkRole for this widget. See
 st_widget_set_accessible_role() for more information.</doc>
         <source-position filename="src/st/st-widget.h" line="191"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2488">accessible #AtkRole for this widget</doc>
+               line="2500">accessible #AtkRole for this widget</doc>
           <type name="Atk.Role" c:type="AtkRole"/>
         </return-value>
         <parameters>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2483">widget to get the accessible role for</doc>
+                 line="2495">widget to get the accessible role for</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9762,20 +10010,20 @@ st_widget_set_accessible_role() for more information.</doc>
               glib:get-property="can-focus">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1901">Returns the current value of the can-focus property. See
+             line="1913">Returns the current value of the can-focus property. See
 st_widget_set_can_focus() for more information.</doc>
         <source-position filename="src/st/st-widget.h" line="157"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="1908">current value of can-focus on @widget</doc>
+               line="1920">current value of can-focus on @widget</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1903">A #StWidget</doc>
+                 line="1915">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9794,14 +10042,14 @@ st_widget_set_can_focus() for more information.</doc>
       <method name="get_focus_chain" c:identifier="st_widget_get_focus_chain">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2974">Gets a list of the focusable children of @widget, in "Tab"
+             line="2986">Gets a list of the focusable children of @widget, in "Tab"
 order. By default, this returns all visible
 (as in clutter_actor_is_visible()) children of @widget.</doc>
         <source-position filename="src/st/st-widget.h" line="172"/>
         <return-value transfer-ownership="container">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2982">
+               line="2994">
   @widget's focusable children</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="Clutter.Actor"/>
@@ -9811,7 +10059,7 @@ order. By default, this returns all visible
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2976">An #StWidget</doc>
+                 line="2988">An #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9821,20 +10069,20 @@ order. By default, this returns all visible
               glib:get-property="hover">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1858">If #StWidget:track-hover is set, this returns whether the pointer
+             line="1870">If #StWidget:track-hover is set, this returns whether the pointer
 is currently over the widget.</doc>
         <source-position filename="src/st/st-widget.h" line="143"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="1865">current value of hover on @widget</doc>
+               line="1877">current value of hover on @widget</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1860">A #StWidget</doc>
+                 line="1872">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -9863,19 +10111,19 @@ is currently over the widget.</doc>
               glib:get-property="label-actor">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2356">Gets the label that identifies @widget if it is defined</doc>
+             line="2368">Gets the label that identifies @widget if it is defined</doc>
         <source-position filename="src/st/st-widget.h" line="163"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2362">the label that identifies the widget</doc>
+               line="2374">the label that identifies the widget</doc>
           <type name="Clutter.Actor" c:type="ClutterActor*"/>
         </return-value>
         <parameters>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2358">a #StWidget</doc>
+                 line="2370">a #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -10007,20 +10255,20 @@ added to the stage</doc>
               glib:get-property="track-hover">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1783">Returns the current value of the track-hover property. See
+             line="1795">Returns the current value of the track-hover property. See
 st_widget_set_track_hover() for more information.</doc>
         <source-position filename="src/st/st-widget.h" line="139"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="1790">current value of track-hover on @widget</doc>
+               line="1802">current value of track-hover on @widget</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1785">A #StWidget</doc>
+                 line="1797">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -10118,7 +10366,7 @@ st_widget_set_track_hover() for more information.</doc>
       <method name="navigate_focus" c:identifier="st_widget_navigate_focus">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2209">Tries to update the keyboard focus within @widget in response to a
+             line="2221">Tries to update the keyboard focus within @widget in response to a
 keyboard event.
 
 If @from is a descendant of @widget, this attempts to move the
@@ -10146,7 +10394,7 @@ to the first available widget in the given direction.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2241">%TRUE if clutter_actor_grab_key_focus() has been
+               line="2253">%TRUE if clutter_actor_grab_key_focus() has been
 called on an actor. %FALSE if not.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -10154,7 +10402,7 @@ called on an actor. %FALSE if not.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2211">the "top level" container</doc>
+                 line="2223">the "top level" container</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="from"
@@ -10163,19 +10411,19 @@ called on an actor. %FALSE if not.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2212">the actor that the focus is coming from</doc>
+                 line="2224">the actor that the focus is coming from</doc>
             <type name="Clutter.Actor" c:type="ClutterActor*"/>
           </parameter>
           <parameter name="direction" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2213">the direction focus is moving in</doc>
+                 line="2225">the direction focus is moving in</doc>
             <type name="Gtk.DirectionType" c:type="GtkDirectionType"/>
           </parameter>
           <parameter name="wrap_around" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2214">whether focus should wrap around</doc>
+                 line="2226">whether focus should wrap around</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -10233,7 +10481,7 @@ will be reliably emitted before the widget is allocated or painted.</doc>
       <method name="popup_menu" c:identifier="st_widget_popup_menu">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1917">Asks the widget to pop-up a context menu.</doc>
+             line="1929">Asks the widget to pop-up a context menu.</doc>
         <source-position filename="src/st/st-widget.h" line="144"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -10242,7 +10490,7 @@ will be reliably emitted before the widget is allocated or painted.</doc>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1919">A #StWidget</doc>
+                 line="1931">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -10251,7 +10499,7 @@ will be reliably emitted before the widget is allocated or painted.</doc>
               c:identifier="st_widget_remove_accessible_state">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2544">This method removes @state as on of the accessible states for
+             line="2556">This method removes @state as on of the accessible states for
 @widget. See st_widget_add_accessible_state() for more information.</doc>
         <source-position filename="src/st/st-widget.h" line="194"/>
         <return-value transfer-ownership="none">
@@ -10261,13 +10509,13 @@ will be reliably emitted before the widget is allocated or painted.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2546">A #StWidget</doc>
+                 line="2558">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="state" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2547">#AtkState state to remove</doc>
+                 line="2559">#AtkState state to remove</doc>
             <type name="Atk.StateType" c:type="AtkStateType"/>
           </parameter>
         </parameters>
@@ -10324,7 +10572,7 @@ present.</doc>
       <method name="set_accessible" c:identifier="st_widget_set_accessible">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2638">This method allows to set a customly created accessible object to
+             line="2650">This method allows to set a customly created accessible object to
 this widget. For example if you define a new subclass of
 #StWidgetAccessible at the javascript code.
 
@@ -10344,13 +10592,13 @@ not a responsibility of this method.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2640">A #StWidget</doc>
+                 line="2652">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="accessible" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2641">an accessible (#AtkObject)</doc>
+                 line="2653">an accessible (#AtkObject)</doc>
             <type name="Atk.Object" c:type="AtkObject*"/>
           </parameter>
         </parameters>
@@ -10360,7 +10608,7 @@ not a responsibility of this method.</doc>
               glib:set-property="accessible-name">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2402">This method sets @name as the accessible name for @widget.
+             line="2414">This method sets @name as the accessible name for @widget.
 
 Usually you will have no need to set the accessible name for an
 object, as usually there is a label for most of the interface
@@ -10376,7 +10624,7 @@ object.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2404">widget to set the accessible name for</doc>
+                 line="2416">widget to set the accessible name for</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="name"
@@ -10385,7 +10633,7 @@ object.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2405">a character string to be set as the accessible name</doc>
+                 line="2417">a character string to be set as the accessible name</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -10395,7 +10643,7 @@ object.</doc>
               glib:set-property="accessible-role">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2448">This method sets @role as the accessible role for @widget. This
+             line="2460">This method sets @role as the accessible role for @widget. This
 role describes what kind of user interface element @widget is and
 is provided so that assistive technologies know how to present
 @widget to the user.
@@ -10419,13 +10667,13 @@ and the accessible's default role will be used instead.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2450">widget to set the accessible role for</doc>
+                 line="2462">widget to set the accessible role for</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="role" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2451">The role to use</doc>
+                 line="2463">The role to use</doc>
             <type name="Atk.Role" c:type="AtkRole"/>
           </parameter>
         </parameters>
@@ -10435,7 +10683,7 @@ and the accessible's default role will be used instead.</doc>
               glib:set-property="can-focus">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1875">Marks @widget as being able to receive keyboard focus via
+             line="1887">Marks @widget as being able to receive keyboard focus via
 keyboard navigation.</doc>
         <source-position filename="src/st/st-widget.h" line="155"/>
         <return-value transfer-ownership="none">
@@ -10445,13 +10693,13 @@ keyboard navigation.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1877">A #StWidget</doc>
+                 line="1889">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="can_focus" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1878">%TRUE if the widget can receive keyboard focus
+                 line="1890">%TRUE if the widget can receive keyboard focus
   via keyboard navigation</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
@@ -10476,7 +10724,7 @@ keyboard navigation.</doc>
               glib:set-property="hover">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1800">Sets @widget's hover property and adds or removes "hover" from its
+             line="1812">Sets @widget's hover property and adds or removes "hover" from its
 pseudo class accordingly
 
 If you have set #StWidget:track-hover, you should not need to call
@@ -10490,13 +10738,13 @@ state might be out of sync due to another actor's pointer grab.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1802">A #StWidget</doc>
+                 line="1814">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="hover" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1803">whether the pointer is hovering over the widget</doc>
+                 line="1815">whether the pointer is hovering over the widget</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -10536,7 +10784,7 @@ This property is inherited by the actor's children.</doc>
               glib:set-property="label-actor">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2372">Sets @label as the #ClutterActor that identifies (labels)
+             line="2384">Sets @label as the #ClutterActor that identifies (labels)
 @widget. @label can be %NULL to indicate that @widget is not
 labelled any more</doc>
         <source-position filename="src/st/st-widget.h" line="164"/>
@@ -10547,13 +10795,13 @@ labelled any more</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2374">a #StWidget</doc>
+                 line="2386">a #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="label" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2375">a #ClutterActor</doc>
+                 line="2387">a #ClutterActor</doc>
             <type name="Clutter.Actor" c:type="ClutterActor*"/>
           </parameter>
         </parameters>
@@ -10679,7 +10927,7 @@ or the stage with an entirely new theme (set of stylesheets).</doc>
               glib:set-property="track-hover">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1743">Enables hover tracking on the #StWidget.
+             line="1755">Enables hover tracking on the #StWidget.
 
 If hover tracking is enabled, and the widget is visible and
 reactive, then @widget's #StWidget:hover property will be updated
@@ -10699,13 +10947,13 @@ case.</doc>
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1745">A #StWidget</doc>
+                 line="1757">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
           <parameter name="track_hover" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1746">%TRUE if the widget should track the pointer hover state</doc>
+                 line="1758">%TRUE if the widget should track the pointer hover state</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -10724,7 +10972,7 @@ case.</doc>
       <method name="sync_hover" c:identifier="st_widget_sync_hover">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="1833">Sets @widget's hover state according to the current pointer
+             line="1845">Sets @widget's hover state according to the current pointer
 position. This can be used to ensure that it is correct after
 (or during) a pointer grab.</doc>
         <source-position filename="src/st/st-widget.h" line="142"/>
@@ -10735,7 +10983,7 @@ position. This can be used to ensure that it is correct after
           <instance-parameter name="widget" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="1835">A #StWidget</doc>
+                 line="1847">A #StWidget</doc>
             <type name="Widget" c:type="StWidget*"/>
           </instance-parameter>
         </parameters>
@@ -10945,7 +11193,7 @@ theme changes</doc>
             <parameter name="self" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="src/st/st-widget.c"
-                   line="1919">A #StWidget</doc>
+                   line="1931">A #StWidget</doc>
               <type name="Widget" c:type="StWidget*"/>
             </parameter>
           </parameters>
@@ -10996,7 +11244,7 @@ theme changes</doc>
           <return-value transfer-ownership="container">
             <doc xml:space="preserve"
                  filename="src/st/st-widget.c"
-                 line="2982">
+                 line="2994">
   @widget's focusable children</doc>
             <type name="GLib.List" c:type="GList*">
               <type name="Clutter.Actor"/>
@@ -11006,7 +11254,7 @@ theme changes</doc>
             <parameter name="widget" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="src/st/st-widget.c"
-                   line="2976">An #StWidget</doc>
+                   line="2988">An #StWidget</doc>
               <type name="Widget" c:type="StWidget*"/>
             </parameter>
           </parameters>
@@ -11022,21 +11270,21 @@ theme changes</doc>
     <function name="describe_actor" c:identifier="st_describe_actor">
       <doc xml:space="preserve"
            filename="src/st/st-widget.c"
-           line="2279">Creates a string describing @actor, for use in debugging. This
+           line="2291">Creates a string describing @actor, for use in debugging. This
 includes the class name and actor name (if any), plus if @actor
 is an #StWidget, its style class and pseudo class names.</doc>
       <source-position filename="src/st/st-widget.h" line="177"/>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="src/st/st-widget.c"
-             line="2287">the debug name.</doc>
+             line="2299">the debug name.</doc>
         <type name="utf8" c:type="char*"/>
       </return-value>
       <parameters>
         <parameter name="actor" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="src/st/st-widget.c"
-               line="2281">a #ClutterActor</doc>
+               line="2293">a #ClutterActor</doc>
           <type name="Clutter.Actor" c:type="ClutterActor*"/>
         </parameter>
       </parameters>
@@ -11171,7 +11419,7 @@ applications to set further properties.
   &lt;para&gt;focus: the widget has focus&lt;/para&gt;
  &lt;/listitem&gt;
  &lt;listitem&gt;
-  &lt;para&gt;indeterminate: the widget is showing the hint text&lt;/para&gt;
+  &lt;para&gt;indeterminate: the widget is showing the hint text or actor&lt;/para&gt;
  &lt;/listitem&gt;
  &lt;listitem&gt;
   &lt;para&gt;hover: the widget is showing the hint text and is underneath the

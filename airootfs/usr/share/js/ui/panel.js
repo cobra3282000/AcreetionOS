@@ -2680,7 +2680,7 @@ Panel.prototype = {
         if (event.get_button() == 3) {  // right click
             try {
                 let [x, y] = event.get_coords();
-                let target = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
+                let target = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
 
                 // NB test on parent fails with centre aligned vertical box, but works for the test against the actor
                 if (this._context_menu._getMenuItems().length > 0 &&
@@ -3599,6 +3599,26 @@ Panel.prototype = {
     },
 
     /**
+     * _panelHasOpenMenus:
+     * 
+     * Checks if panel has open menus in the global.menuStack
+     * @returns 
+     */
+    _panelHasOpenMenus: function() {
+        if (global.menuStack == null || global.menuStack.length == 0)
+            return false;
+
+        for (let i = 0; i < global.menuStack.length; i++) {
+            let menu = global.menuStack[i];
+            if (menu.getPanel() === this.actor) {
+                return true;
+            }
+        }
+
+        return false;
+    },
+
+    /**
      * _updatePanelVisibility:
      *
      * Checks whether the panel should show based on the autohide settings and
@@ -3608,7 +3628,7 @@ Panel.prototype = {
      * true = autohide, false = always show, intel = Intelligent
      */
     _updatePanelVisibility: function() {
-        if (this._panelEditMode || this._peeking)
+        if (this._panelEditMode || this._peeking || this._panelHasOpenMenus())
             this._shouldShow = true;
         else {
             switch (this._autohideSettings) {
@@ -3838,7 +3858,7 @@ Panel.prototype = {
         if (this._destroyed) return;
         this._showHideTimer = 0;
 
-        if ((this._shouldShow && !force) || global.menuStackLength > 0) return;
+        if ((this._shouldShow && !force) || this._panelHasOpenMenus()) return;
 
         // setup panel tween - slide out the monitor edge leaving one pixel
         // if horizontal panel, animation on y. if vertical, animation on x.
