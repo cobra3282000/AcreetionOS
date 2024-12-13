@@ -35,6 +35,7 @@ mkdir /home/$name/.config/autostart
 cp -r /cinnamon-configs/dd.desktop /home/$name/.config/autostart
 
 chown -R $name:$name /home/$name/.config
+chown -R $name:$name /middle.png
 
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 cp -r /cinnamon-configs/.bashrc /root
@@ -43,5 +44,3 @@ mv /resolv.conf /etc/resolv.conf
 chattr +i /etc/resolv.conf
 
 cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
-
-
