@@ -10,7 +10,8 @@ bind
 bolt
 brltty
 broadcom-wl-dkms
-# btrfs-progs 
+btrfs-progs 
+xfsprogs
 cloud-init
 cryptsetup
 ddrescue
