@@ -36,7 +36,7 @@ cp -r /cinnamon-configs/dd.desktop /home/$name/.config/autostart
 
 chown -R $name:$name /home/$name/.config
 chown -R $name:$name /middle.png
-mv /middle.png /home/darren
+#mv /middle.png /home/$USER
 
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 cp -r /cinnamon-configs/.bashrc /root
