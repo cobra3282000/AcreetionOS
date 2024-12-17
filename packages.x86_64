@@ -120,6 +120,7 @@ cinnamon-desktop
 cinnamon-menus
 cinnamon-session
 cinnamon-settings-daemon
+cinnamon-screensaver
 cjs
 muffin
 #nemo
@@ -153,7 +154,7 @@ qt6-wayland
 #libkf6crash-devel
 glu
 calamaresos
-#calamares-config
+calamares-config
 #gnome-disk-utility
 # fastfetch
 # cinnamon-configs
