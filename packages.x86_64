@@ -1,5 +1,5 @@
 alsa-utils
-amd-ucode
+#amd-ucode
 #intel-compute-runtime
 arch-install-scripts
 #dracut
@@ -47,7 +47,8 @@ libusb-compat
 linux
 linux-headers
 linux-atm
-linux-firmware
+#linux-firmware
+linux-firmware-acreetionos
 linux-firmware-marvell
 livecd-sounds
 lsscsi
