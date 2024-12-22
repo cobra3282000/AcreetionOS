@@ -43,5 +43,6 @@ cp -r /cinnamon-configs/.bashrc /root
 
 mv /resolv.conf /etc/resolv.conf
 chattr +i /etc/resolv.conf
+chattr +i /etc/os-release
 
 cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
