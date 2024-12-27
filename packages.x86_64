@@ -164,7 +164,7 @@ cups
 kpmcore
 electron31
 networkmanager
-samba
+# samba
 # vlc
 # yay-bin
 # libpamac-aur
