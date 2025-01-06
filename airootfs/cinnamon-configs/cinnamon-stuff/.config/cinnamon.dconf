@@ -32,7 +32,7 @@ delay=15
 image-source='directory:///backgrounds'
 
 [desktop/interface]
-cursor-size=44
+cursor-size=24
 gtk-theme='CBlack'
 icon-theme='AdwaitaLegacy'
 text-scaling-factor=1.5000000000000004
