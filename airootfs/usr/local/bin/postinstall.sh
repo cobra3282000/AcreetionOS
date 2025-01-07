@@ -47,7 +47,7 @@ chattr +i /etc/os-release
 
 cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
 
-mkdir /home/$name/.local/share/cinnamon
+# mkdir /home/$name/.local/share/cinnamon
 
-cp -r /cinnamon-configs/cinnamon-stuff/extensions /home/$name/.local/share/cinnamon/
+# cp -r /cinnamon-configs/cinnamon-stuff/extensions /home/$name/.local/share/cinnamon/
 
