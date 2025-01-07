@@ -196,3 +196,7 @@ nettle
 yaml-cpp
 libpwquality
 gnome-terminal
+python-six
+python-pam
+python312-main
+
