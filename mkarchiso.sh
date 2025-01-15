@@ -1,1 +1,1 @@
-mkarchiso -L AcreetionOS -v -o ../ISO . -j$nproc
+mkarchiso -L AcreetionOS -v -o ../ISO . --overwrite -j$nproc
