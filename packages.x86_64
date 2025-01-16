@@ -167,7 +167,7 @@ networkmanager
 # samba
 # vlc
 yay-bin
-libpamac-aur
+#libpamac-aur
 pamac-aur-git
 xarchiver
 debugedit
