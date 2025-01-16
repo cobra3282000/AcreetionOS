@@ -166,10 +166,10 @@ electron31
 networkmanager
 # samba
 # vlc
-# yay-bin
-# libpamac-aur
-# pamac-aur-git
-# xarchiver
+yay-bin
+libpamac-aur
+pamac-aur-git
+xarchiver
 debugedit
 fakeroot
 #timeshift
