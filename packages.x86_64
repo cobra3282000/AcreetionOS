@@ -173,7 +173,8 @@ xarchiver
 debugedit
 fakeroot
 #timeshift
-cosmic-terminal
+#cosmic-terminal
+#gnome-terminal
 gnutls
 glib-networking
 ddcutil
