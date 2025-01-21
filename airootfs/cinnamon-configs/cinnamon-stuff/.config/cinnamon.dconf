@@ -25,7 +25,7 @@ window-effect-speed=1
 quit-time-delay=60
 
 [desktop/background]
-picture-uri='file:///backgrounds/blackhole-1.jpg'
+picture-uri='file:///backgrounds/acreetion.jpg'
 
 [desktop/background/slideshow]
 delay=15
