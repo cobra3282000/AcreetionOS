@@ -166,11 +166,11 @@ electron31
 networkmanager
 # samba
 # vlc
-yay-bin
+#yay-bin
 #libpamac-aur
-pamac-aur-git
-xarchiver
-debugedit
+#pamac-aur-git
+#xarchiver
+#debugedit
 fakeroot
 #timeshift
 #cosmic-terminal
@@ -179,7 +179,7 @@ gnutls
 glib-networking
 ddcutil
 directx-headers
-imagemagick
+#imagemagick
 libnm
 libpulse
 libxcb
