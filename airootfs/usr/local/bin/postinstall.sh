@@ -41,7 +41,7 @@ chown -R $name:$name /middle.png
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 cp -r /cinnamon-configs/.bashrc /root
 cp -r /cinnamon-configs/AcreetionOS.txt /root
-cp -r /cinnamon-configs/AcreetionOS.txt /home/$name/.bashrc
+cp -r /cinnamon-configs/AcreetionOS.txt /home/$name/AcreetionOS.txt
 
 mv /resolv.conf /etc/resolv.conf
 chattr +i /etc/resolv.conf

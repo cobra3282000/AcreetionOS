@@ -154,7 +154,8 @@ qt6-wayland
 #libkf6crash-devel
 glu
 #calamaresos
-calamares
+#calamares
+calamares-git
 calamares-config
 #gnome-disk-utility
 # fastfetch
