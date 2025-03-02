@@ -35,7 +35,7 @@ image-source='directory:///backgrounds'
 cursor-size=39
 gtk-theme='Arc-Dark'
 icon-theme='Cosmic'
-text-scaling-factor=1.4000000000000004
+text-scaling-factor=1.0
 toolkit-accessibility=false
 
 [desktop/notifications]
