@@ -198,7 +198,12 @@ nettle
 yaml-cpp
 libpwquality
 gnome-terminal
+python
 python-six
 python-pam
 python312-main
-
+base-devel
+git
+python-pip
+rust
+nodejs
