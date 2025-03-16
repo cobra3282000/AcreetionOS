@@ -25,6 +25,9 @@
 
 mkdir /home/$name/.config
 mkdir /home/$name/.config/nemo
+mkdir -p /home/$name/.local/share/cinnamon/extensions
+
+cp -r /cinnamon-configs/cinnamon-stuff/extensions/* /home/$name/.local/share/cinnamon/extensions
 
 #cp -r /cinnamon-configs/cinnamon-stuff/nemo/* /home/$name/.config/nemo
 
@@ -61,3 +64,4 @@ cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
 
 cp /cinnamon-configs/AcreetionOS.txt /home/$name/
 
+chsh -s /bin/bash root

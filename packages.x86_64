@@ -8,7 +8,7 @@ b43-fwcutter
 base
 bind
 bolt
-brltty
+#brltty
 broadcom-wl-dkms
 #btrfs-progs
 #xfsprogs
