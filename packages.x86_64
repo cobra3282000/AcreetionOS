@@ -87,7 +87,7 @@ ppp
 pptpclient
 pv
 qemu-guest-agent
-#reflector
+reflector
 rp-pppoe
 rsync
 sdparm
