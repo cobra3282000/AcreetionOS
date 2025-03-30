@@ -207,3 +207,5 @@ git
 python-pip
 rust
 nodejs
+firefox
+pamac-aur-git

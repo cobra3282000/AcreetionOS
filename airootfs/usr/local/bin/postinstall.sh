@@ -64,4 +64,7 @@ cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
 
 cp /cinnamon-configs/AcreetionOS.txt /home/$name/
 
+mkdir -p /usr/share/backgrounds
+cp -r /backgrounds /usr/share/backgrounds
+
 chsh -s /bin/bash root
