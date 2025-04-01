@@ -2,7 +2,7 @@
 
 Welcome to AcreetionOS Linux, an open-source project aimed at providing the user a stable and up-to-date experience.
 
-Download ISO here: [here]("https://www.acreetionos.org")
+Download ISO here: www.acreetionos.org
 
 ## Project Overview
 
