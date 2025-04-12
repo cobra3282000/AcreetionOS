@@ -123,7 +123,7 @@ fi
 alias tee='sudo tee'
 alias update='sudo pacman -Syyu'
 alias fupdate='flatpak update'
-alias fastfetch='fastfetch -l AcreetionOS.txt'
+alias fastfetch='fastfetch -l ~/AcreetionOS.txt'
 export GPG_TTY=$(tty)
 
 clear
