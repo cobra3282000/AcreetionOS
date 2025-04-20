@@ -1,5 +1,5 @@
 # AcreetionOS Linux
-
+# copyright 2025
 Welcome to AcreetionOS Linux, an open-source project aimed at providing the user a stable and up-to-date experience.
 
 Download ISO here: www.acreetionos.org

@@ -1,1 +1,1 @@
-mkarchiso -L AcreetionOS -v -o ../ISO . --overwrite -j$nproc
+mkarchiso -L AcreetionOS -v -o ../ISO . -C ./pacman.conf --j$nproc
