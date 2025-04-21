@@ -68,3 +68,9 @@ mkdir -p /usr/share/backgrounds
 cp -r /backgrounds /usr/share/backgrounds
 
 chsh -s /bin/bash root
+
+echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
+
+cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
+
+
