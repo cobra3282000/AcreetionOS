@@ -56,7 +56,7 @@ chattr +i /etc/os-release
 #touch /usr/lib/python3.13/site-packages/six/__init__.py
 #cp /usr/lib/python3.12/site-packages/six.py /usr/lib/python3.13/site-packages/six/six.py
 
-cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
+# cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
 
 # mkdir /home/$name/.local/share/cinnamon
 
@@ -71,6 +71,7 @@ chsh -s /bin/bash root
 
 echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
 
-cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
+#cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
+cp /etc/pacman2.conf pacman.conf
 
 

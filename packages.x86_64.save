@@ -23,6 +23,7 @@ cinnamon-menus
 cinnamon-session
 cinnamon-settings-daemon
 cinnamon-screensaver
+cinnamon-translations
 cjs
 coreutils
 cpio
@@ -50,7 +51,7 @@ gcc
 gcc-libs
 git
 glu
-gnome-shell
+gnome-terminal
 gpart
 gptfdisk
 grub
@@ -233,3 +234,23 @@ xorg-xrandr
 xorg-xwayland
 xz
 zsh
+######  extra needed stuff  ######
+xdg-desktop-portal-xapp
+xdg-user-dirs-gtk
+qt6-multimedia-ffmpeg
+qt6-multimedia-gstreamer
+qca-qt6
+qt6-5compat
+qt6-base
+qt6-declarative
+qt6-doc
+qt6-shadertools
+qt6-svg
+qt6-tools
+qt6-translations
+qt6-wayland
+gedit
+firefox
+pamac-themes-extra
+pamac-aur-git
+adwaita-icon-theme
