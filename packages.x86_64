@@ -3,7 +3,7 @@ amd-ucode
 #intel-compute-runtime
 arch-install-scripts
 #dracut
-#archiso 
+#archiso
 b43-fwcutter
 base
 bind
@@ -216,7 +216,7 @@ cinnamon-translations
 adwaita-icon-theme
 xxkpmcore
 nemo
-archiso
+#archiso
 libnsl
 polkit
 polkit-gnome
