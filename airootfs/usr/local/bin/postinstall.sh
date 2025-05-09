@@ -66,6 +66,7 @@ cp /cinnamon-configs/AcreetionOS.txt /home/$name/
 
 mkdir -p /usr/share/backgrounds
 cp -r /backgrounds /usr/share/backgrounds
+rm -rf /backgrounds
 
 chsh -s /bin/bash root
 
@@ -75,7 +76,9 @@ echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
 cp /etc/pacman2.conf pacman.conf
 cp /mkinitcpio/mkinitcpio.conf /etc/mkinitcpio.conf
 cp /mkinitcpio/archiso.conf /etc/mkinitcpio.conf.d
+cp /cinnamon-configs/.nanorc /home/$name/.nanorc
 
 rm -rf /mkinitcpio
+rm -rf cinnamon-configs
 
 
