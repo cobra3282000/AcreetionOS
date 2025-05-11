@@ -233,3 +233,10 @@ xf86-video-nouveau
 xf86-input-libinput
 xxlibxml2-so.2
 device-mapper
+linux-firmware-bnx2x
+linux-firmware-liquidio
+linux-firmware-nfp
+linux-firmware-qcom
+linux-firmware-qlogic
+linux-firmware-whence
+linux-firmware-mellanox
