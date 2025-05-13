@@ -1,5 +1,5 @@
 alsa-utils
-amd-ucode
+#amd-ucode
 #intel-compute-runtime
 arch-install-scripts
 #dracut
@@ -35,7 +35,7 @@ gpm
 gptfdisk
 grub
 hdparm
-intel-ucode
+#intel-ucode
 #irssi
 iw
 iwd
