@@ -29,7 +29,7 @@ picture-uri='file:///usr/share/backgrounds/acreetion.png'
 
 [desktop/background/slideshow]
 delay=15
-image-source='directory:///backgrounds'
+image-source='directory:///usr/share/backgrounds'
 
 [desktop/interface]
 cursor-size=39
