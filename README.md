@@ -10,7 +10,7 @@ AcreetionOS Linux is a community-driven effort to build a lightweight, versatile
 
 ## Discord
 
-- Discord Community [Acreetion Discord help]("https://discord.gg/AJ6uuvtDXY")
+- Discord Community: https://discord.gg/AJ6uuvtDXY
 
 ## Features
 
