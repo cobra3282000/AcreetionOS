@@ -8,6 +8,10 @@ Download ISO here: www.acreetionos.org
 
 AcreetionOS Linux is a community-driven effort to build a lightweight, versatile Linux distribution. AcreetionOS Linux is currently based on Arch Linux, but the future goal is to be a parallel* distribution with our own base. Our goal is to provide a solid foundation for both everyday users and developers, with a focus on simplicity, ease of use, and stability; all while keeping packages up to date.
 
+## Discord
+
+- Discord Community [Acreetion Discord help]("https://discord.gg/AJ6uuvtDXY")
+
 ## Features
 
 - Lightweight base system
