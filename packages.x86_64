@@ -209,7 +209,8 @@ python-pip
 rust
 nodejs
 firefox
-pamac-aur-git
+#pamac-aur-git
+pamac-all
 gnome-themes-extra
 # gtk-engine-murrine
 cinnamon-translations
