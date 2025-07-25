@@ -73,7 +73,7 @@ chsh -s /bin/bash root
 echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
 
 #cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
-cp /etc/pacman2.conf pacman.conf
+#cp /etc/pacman2.conf /etc/pacman.conf
 cp /mkinitcpio/mkinitcpio.conf /etc/mkinitcpio.conf
 cp /mkinitcpio/archiso.conf /etc/mkinitcpio.conf.d
 cp /cinnamon-configs/.nanorc /home/$name/.nanorc
