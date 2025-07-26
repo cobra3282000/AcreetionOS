@@ -1,5 +1,8 @@
 #!/bin/bash -e
-#
+
+#ln -sf /usr/bin/bash /bin/bash 2>/dev/null || true
+#ln -sf /usr/bin/bash /bin/sh 2>/dev/null || true
+
 ##############################################################################
 #
 #  PostInstall is free software; you can redistribute it and/or modify
@@ -15,7 +18,7 @@
 ##############################################################################
 
  name=$(ls -1 /home)
- REAL_NAME=/home/$name
+# REAL_NAME=/home/$name
 
 # genfstab -U / > /etc/fstab
 
@@ -23,9 +26,9 @@
 #cp /cinnamon-configs/cinnamon-stuff/usr/bin/* /usr/bin/
 #cp -r /cinnamon-configs/cinnamon-stuff/usr/share/* /usr/share/
 
-mkdir /home/$name/.config
-mkdir /home/$name/.config/nemo
-#mkdir -p /home/$name/.local/share/cinnamon/extensions
+mkdir -p /home/$name/.config
+mkdir -p /home/$name/.config/nemo
+mkdir -p /home/$name/.local/share/cinnamon/extensions
 
 #cp -r /cinnamon-configs/cinnamon-stuff/extensions/* /home/$name/.local/share/cinnamon/extensions
 
@@ -33,7 +36,7 @@ mkdir /home/$name/.config/nemo
 
 cp -r /cinnamon-configs/cinnamon-stuff/.config/* /home/$name/.config/
 
-mkdir /home/$name/.config/autostart
+mkdir -p /home/$name/.config/autostart
 
 cp -r /cinnamon-configs/dd.desktop /home/$name/.config/autostart
 
@@ -73,7 +76,7 @@ chsh -s /bin/bash root
 echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
 
 #cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
-cp /etc/pacman2.conf pacman.conf
+#cp /etc/pacman2.conf /etc/pacman.conf
 cp /mkinitcpio/mkinitcpio.conf /etc/mkinitcpio.conf
 cp /mkinitcpio/archiso.conf /etc/mkinitcpio.conf.d
 cp /cinnamon-configs/.nanorc /home/$name/.nanorc
