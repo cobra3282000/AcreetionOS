@@ -1,0 +1,2 @@
+Server = https://packages.acreetionos.org/repo-main/$arch
+#Server = https://packages.acreetionos.org/repo/$arch
